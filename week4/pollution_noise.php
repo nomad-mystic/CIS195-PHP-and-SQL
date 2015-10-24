@@ -6,6 +6,26 @@
  * Time: 2:25 AM
  */
 
+$pollution = [];
+
+$file = fopen('data/pollution_noise.csv', 'r');
+if(!$file) {
+     echo '<h1>Error, File wasn\'t Found...</h1>';
+     exit;
+}
+
+do {
+     $line = fgetcsv($file);
+     if(!$line) {
+          break;
+     }
+     $pollution = $line;
+
+} while($line);
+
+var_dump($pollution);
+$total = [$pollution];
+$total
 ?>
 
 <!doctype html>
@@ -27,15 +47,13 @@
 <table>
      <tr>
           <th>http://lib.stat.cmu.edu/DASL/Datafiles/airpullutionfiltersdat.html</th>
-          <th></th>
-          <th></th>
-          <th></th>
+          <th>NOISE</th>
+          <th>SIZE</th>
+          <th>TYPE</th>
+          <th>SIDE</th>
      </tr>
      <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <?php echo "<td>$total</td>"; ?>
      </tr>
 </table>
 </body>
