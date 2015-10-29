@@ -7,6 +7,7 @@
  */
 
 define('HEADER', 'header');
+define('APP_NAME', 'app_name');
 
 
 $array_data = [];
@@ -58,37 +59,29 @@ $HEADER = $array_data[0];
      </div>
 </header>
 <section class="greySections">
-     <div class="whiteCard">
+     <div class="whiteCard table-responsive">
           <table class="table table-striped table-bordered table-hover table-responsive">
                <tbody>
                <?php
-               for($t=0; $t < count($array_data); $t++) {
-                    if($HEADER === $array_data[$t]) {
-                         echo '<tr>';
+                    for($t=0; $t < count($array_data); $t++) {
+                         $APP_NAME = $array_data[$t][0];
+                         if($HEADER === $array_data[$t]) {
+                              echo '<tr class="success">';
+                              for($h=0; $h < count($HEADER); $h++) {
 
-                         for($h=0; $h < count($HEADER); $h++) {
+                                   echo '<th>' .'<span class="fa fa-newspaper-o"></span>' . $HEADER[$h] . '</th>';
+                              }
+                              echo '</tr>';
 
-                              echo '<th>' .'<span class="fa fa-newspaper-o"></span>' . $HEADER[$h] . '</th>';
+                         } else {
+                              echo '<tr>';
+                              for($i=0; $i < count($array_data[$t]); $i++) {
+                                   echo "<td>" . $array_data[$t][$i] . "</td>";
+                              }
+                              echo '</tr>';
+
                          }
-                         echo '</tr>';
-
-                    } else if($array_data[$t][0]) {
-                         echo '<tr>';
-
-                         echo "<td>" . $array_data[$t][0] . "</td>";
-
-                         echo '</tr>';
                     }
-                    ///Maybe ^^^^^^^^^^^^^^^^
-                    else {
-                         echo '<tr>';
-                         for($i=0; $i < count($array_data[$t]); $i++) {
-                              echo "<td>" . $array_data[$t][$i] . "</td>";
-                         }
-                         echo '</tr>';
-                    }
-
-               }
                ?>
                </tbody>
           </table>
