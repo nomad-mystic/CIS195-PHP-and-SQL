@@ -12,6 +12,10 @@ define('TYPE', 'type');
 define('LETTER_GRADE', 'letter');
 define('PASS_FAIL', 'pf');
 define('AUDIT', 'audit');
+
+function write_output($text, $start = '<p>', $end = '</p>') {
+     echo $start . $text . $end;
+}
 function validate_score() {
 
      $score = $_GET[SCORE];
@@ -21,13 +25,18 @@ function validate_score() {
           exit;
      }
      if(!is_numeric($score)) {
-          echo '<h1>' . 'THIS IS NOT A NUMBER' . '</h1>';
+          write_output('' . 'THIS IS NOT A NUMBER' . '');
           exit;
      }
 
      return $score;
 }
 function validate_type() {
+     if(!isset($_GET[TYPE])) {
+          write_output('WE NEED A GRADE TYPE');
+          exit;
+     }
+
      $type = $_GET[TYPE];
      switch ($type) {
           case LETTER_GRADE:
@@ -35,13 +44,10 @@ function validate_type() {
           case AUDIT:
                break;
           default:
-               echo '<h1>' . 'THE GRADE MUST BE "letter" OT "pf"' . '</h1>';
+               write_output('' . 'THE GRADE MUST BE "letter" OT "pf"' . '');
                exit;
      }
-     if(!isset($_GET[TYPE])) {
-          echo '<h1>' . ' WE NEED A GRADE TYPE ' . '</h1>';
-          exit;
-     }
+
      return $type;
 }
 
@@ -67,18 +73,18 @@ function grading($type, $score) {
 
 function output_pass_fail($score) {
      if($score >= 75) {
-          echo '<h1>' . 'YOU PASSED THE CLASS' . '</h1>';
+          write_output('' . 'YOU PASSED THE CLASS' . '');
      } else  {
-          echo '<h1>' . "YOU DON'T PASS THE CLASS" . '</h1>';
+          write_output('' . "YOU DON'T PASS THE CLASS" . '');
      }
 }
 
 function output_audit() {
-     echo '<h1>' . "YOU ARE AUDITING THIS CLASS" . '</h1>';
+     write_output('' . "YOU ARE AUDITING THIS CLASS" . '');
 }
 
 function output_unknown_type($type) {
-     echo '<h1>' . "DEFAULT" . $type . '</h1>';
+     write_output('' . "DEFAULT" . $type . '');
 }
 
 
@@ -98,7 +104,7 @@ function output_letter_grade($score) {
      } else {
           $grade = 'F';
      }
-          echo '<h1>' . "Students grade is $grade" . '</h1>';
+          write_output('' . "Students grade is $grade" . '');
 }
 
 
