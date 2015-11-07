@@ -16,7 +16,7 @@
      max-height: <?php echo CARD_IMAGE_PERCENT?>;
 }
 .card {
-
+     text-align: center;
      display: inline-block;
      max-width: <?php echo 100 / HAND_CARDS; ?>%;
      max-height: 100%;

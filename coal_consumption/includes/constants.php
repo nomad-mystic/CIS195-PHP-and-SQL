@@ -9,4 +9,6 @@
 
 const NUMBER_COUNTRIES = 227;
 const YEARS = 30;
+const USER_INPUT_KEY = 'user_input';
+const TARGET_PAGE = 'country_consumption.php';
 

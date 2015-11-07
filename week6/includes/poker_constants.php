@@ -50,3 +50,9 @@ const SUIT_NAMES = [
 const HAND_CARDS = 5;
 
 
+
+///////////////////////// POST WalkThrough
+const USER_INPUT_KEY = 'user_input';
+const TRAGET_PAGE = 'handle_input.php';
+
+

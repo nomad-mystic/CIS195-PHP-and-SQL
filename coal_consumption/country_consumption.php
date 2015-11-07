@@ -10,10 +10,12 @@ require_once('includes/constants.php');
 require_once('includes/functions.php');
 
 
-$user_input = $_POST['name'];
+$user_input = $_POST['user_input'];
 
 $array_data = create_country_array();
 
-$validated_input = validation($user_input);
+$country_names_array = country_names($array_data);
+
+$validated_input = validation($user_input, $country_names_array);
 
 find_country($validated_input, $array_data);
