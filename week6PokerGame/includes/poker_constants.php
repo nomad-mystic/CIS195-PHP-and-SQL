@@ -49,10 +49,24 @@ const SUIT_NAMES = [
 
 const HAND_CARDS = 5;
 
+/////////////
+const HAND_KEY = 'hand';
+const DECK_KEY = 'deck';
+const CARD_KEY = 'card';
+
+const KEEP = 'keep';
+const DRAW = 'draw';
+
+const CARD_CLASS = 'car_image';
+const CARD_ID = 'card_id';
+
+const CARD_SRC = 'data-src';
 
 
-///////////////////////// POST WalkThrough
-const USER_INPUT_KEY = 'user_input';
-const TRAGET_PAGE = 'handle_input.php';
+
+
+
+
+
 
 

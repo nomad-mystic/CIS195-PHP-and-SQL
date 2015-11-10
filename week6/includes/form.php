@@ -6,10 +6,11 @@
  * Time: 1:19 PM
  */
 
+require_once('constants.php');
 
 function output_form($method, $action) {
      echo "<form method='{$method}' action='{$action}'>\n";
-     echo "    <input type='text' name'" . USER_INPUT_KEY . "'>\n";
+     echo "    <input type='text' name='" . USER_INPUT_KEY . "'>\n";
      echo "    <input type='submit' value'Submit'>\n";
-     echo '</form>';
+     echo "</form>\n";
 }

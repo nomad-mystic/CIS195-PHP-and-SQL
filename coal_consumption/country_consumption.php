@@ -18,4 +18,23 @@ $country_names_array = country_names($array_data);
 
 $validated_input = validation($user_input, $country_names_array);
 
-find_country($validated_input, $array_data);
+$test_JSON = find_country($validated_input, $array_data);
+
+
+?>
+
+<!doctype html>
+<html lang="en">
+
+     <?php require_once('includes/main_head.php'); ?>
+
+     <script src="bower_components/Chart.js/Chart.js"></script>
+     <script src="includes/coal.js.php"></script>
+
+     <body onload="init('<?php echo $test_JSON; ?>');">
+
+     <canvas id="c" width="1000" height="1000"></canvas>
+
+
+     </body>
+</html>

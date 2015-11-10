@@ -12,10 +12,10 @@ require_once('constants.php');
 function display_form($method, $action) {
 
      echo "<form method='{$method}' action='{$action}'>\n";
-     echo "    <input type='text' name='" . USER_INPUT_KEY . "'>\n";
+     echo "              <input type='text' name='" . USER_INPUT_KEY . "'>\n";
 //     echo '<input type="text" name="name">';
-     echo "    <input type='submit' value'Submit'>\n";
-     echo '</form>';
+     echo "              <input type='submit' value='Submit'>" . "\n";
+     echo '          </form>' . "\n";
 }
 
 function validation($user_input, $country_names_array) {
@@ -38,24 +38,22 @@ function validation($user_input, $country_names_array) {
 
 function find_country($user_input, $array_data) {
 
-     var_dump($array_data);
+//     var_dump($array_data);
      for ($i = 0; $i < NUMBER_COUNTRIES; $i++) {
-          if($array_data[$i][0] == $user_input) {
-               $current_key = key($array_data);
-               echo $current_key;
-               for($y = 0; $y < YEARS; $y++) {
-//                  $current_country = [];
-                    $current_country_point = $array_data[$i][$y];
-                    $current_country[] = $current_country_point;
-                    display_data($user_input, $current_country);
-               }
+
+          if($array_data[$i][0] === $user_input) {
+               $current_country = $array_data[$i];
+               $test_JSON = display_data($user_input, $current_country);
+
           }
      }
+     return $test_JSON;
 }
 
 function create_country_array() {
      $array_data = [];
      $get_data = fopen('data/coal_consumption.csv', 'r');
+
      if(!$get_data) {
           echo '<p>Error something Happen to the file...</p>';
           exit;
@@ -72,17 +70,20 @@ function create_country_array() {
 }
 
 function display_data($user_input, $current_country) {
-//     echo $upper_user_input;
-//     $test_array = is_array($current_country);
-//     echo $test_array;
-//     var_dump($current_country);
-//     print_r($current_country);
-//     $sliced_country = array_slice($current_country, 29);
-//     var_dump($sliced_country);
-//     echo '<h1>' . $upper_user_input . '</h1>';
-//     for($v = 0; $v < YEARS; $v++) {
-//          echo '<p>' . $sliced_country[$v] . '</p>';
-//     }
+
+     echo '<h1>' . $user_input . '</h1>';
+     $current_country = array_map(function($var) {
+          // Your 'id' is not an int and will not be converted.
+          return is_numeric($var) ? (float) round($var, 2) * 100  : $var;
+     }, $current_country);
+
+
+     $current_country_data = array_slice($current_country, 1, 29);
+     var_dump($current_country_data);
+
+     $test_json = json_encode($current_country_data);
+
+     return $test_json;
 }
 
 function country_names($array_data) {

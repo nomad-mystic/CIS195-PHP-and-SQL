@@ -13,6 +13,7 @@ require_once('includes/functions.php');
 <!doctype html>
 <html lang="en">
      <?php require_once('includes/main_head.php'); ?>
+
      <body>
           <h1>Annual Coal Consumption by Country</h1>
           <h3>Total annual coal consumption by country from 1980 to 2009 (available as Quadrillion Btu). Downloaded from
@@ -20,4 +21,5 @@ require_once('includes/functions.php');
           <h4>Please Enter a country to see the coal consumption of that country.</h4>
           <?php display_form('POST', TARGET_PAGE); ?>
      </body>
+
 </html>
