@@ -11,9 +11,8 @@ require_once('functions.php');
 ?>
 
 
-function init($test_JSON) {
-    var ctx = document.getElementById("c").getContext("2d");
-
+function init(json_data) {
+     var ctx = document.getElementById("canvas").getContext("2d");
      var data = {
         labels: [
              '1980',
@@ -44,22 +43,20 @@ function init($test_JSON) {
              '2005',
              '2006',
              '2007',
-             '2008',
-             '2009'
+             '2008'
+
         ],
         datasets: [{
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: []
+               label: "My First dataset",
+               fillColor: "rgba(221,66,121,0.3)",
+               strokeColor: "rgba(0,0,0,.5)",
+               pointColor: "#2F9099",
+               pointStrokeColor: "#000",
+               pointHighlightFill: "#fff",
+               pointHighlightStroke: "rgba(220,220,220,1)",
+               data: json_data
         }]
     };
-     data.datasets[0].data = $test_JSON;
-     console.log(data.datasets[0].data);
-
      var MyNewChart = new Chart(ctx).Line(data);
 }
 
