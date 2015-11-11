@@ -4,9 +4,9 @@
  * Created by Nomad_Mystic on 11/10/2015.
  */
 
+header('Content-Type: text/javascript');
 require_once('constants.php');
 require_once('functions.php');
-
 
 ?>
 
