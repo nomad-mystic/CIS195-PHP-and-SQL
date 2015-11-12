@@ -5,9 +5,12 @@
  * Date: 11/10/2015
  * Time: 4:34 PM
  */
-require_once('constants.php');
+
 header('Content-Type: text/css');
+require_once('constants.php');
+
  ?>
+
 
 
 
@@ -115,6 +118,7 @@ input[type="submit"] {
      font-size: 3em;
      text-align: center;
      margin: 2% auto;
+     line-height: 1.25em;
      width: 50%;
      background: #fff;
      border-radius: <?php echo BORDER_RADIUS; ?>;

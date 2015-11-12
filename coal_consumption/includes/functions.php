@@ -78,7 +78,7 @@ function map_data($current_country)
 {
      $current_country = array_map(function($var) {
           // Your 'id' is not an int and will not be converted.
-          return is_numeric($var) ? (float) round($var, 2) * 100  : $var;
+          return is_numeric($var) ? (float) $var   : $var;
      }, $current_country);
 
      $current_country_data = array_slice($current_country, 1, 29);
