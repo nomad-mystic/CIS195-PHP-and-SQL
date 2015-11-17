@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/CIS195PHP.iml" filepath="$PROJECT_DIR$/.idea/CIS195PHP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/CIS195P.iml" filepath="$PROJECT_DIR$/.idea/CIS195P.iml" />
     </modules>
   </component>
 </project>

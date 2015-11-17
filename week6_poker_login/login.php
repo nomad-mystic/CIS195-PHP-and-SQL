@@ -8,6 +8,16 @@
 
 
 require_once('includes/login_constants.php');
+require_once('includes/utilities.php');
+
+require_secure();
+
+
+$login_username = get_post_value(LOGIN_USERNAME_KEY);
+$login_password = get_post_value(LOGIN_PASSWORD_KEY);
+$register_username = get_post_value(REGISTER_USERNAME_KEY);
+$register_password = get_post_value(REGISTER_PASSWORD_KEY);
+$register_confirm_password = get_post_value(CONFIRM_PASSWORD_KEY );
 
 $error_message = '';
 

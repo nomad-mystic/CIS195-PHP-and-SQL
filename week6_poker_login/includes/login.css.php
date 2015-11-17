@@ -9,6 +9,10 @@
 
 ?>
 
+input {
+     font-size: 1.25em;
+
+}
 
 #login_content {
      font-family: Helvetica, "Times New Roman", sans-serif;
