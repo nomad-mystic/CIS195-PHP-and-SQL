@@ -35,6 +35,12 @@ function show_hand($hand) {
      echo '</div>';
 }
 
+function show_user()
+{
+     echo '<div id="user_pane">' . "\n";
+     echo      $_SESSION[SESSION_USER_KEY] . ' [<a href="' . LOGOUT_PAGE . '">LOGOUT</a>]' . "\n";
+     echo '</div>' . "\n";
+}
 function show_card($card, $id)
 {
      echo '<div class="card">' . "\n";

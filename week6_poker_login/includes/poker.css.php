@@ -40,6 +40,8 @@
      border-radius: 1em;
      cursor: pointer;
 }
-
+#user_pane {
+     text-align: right;
+}
 
 

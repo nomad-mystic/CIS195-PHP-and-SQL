@@ -12,12 +12,15 @@
  ?>
 
 function centerContent() {
+     var userPane = document.getElementById('user_pane');
      var content = document.getElementById('content');
      var windowHeight = window.innerHeight;
      var contentHeight = parseInt(window.getComputedStyle(content).height);
+     var userPaneHeight = parseInt(window.getComputedStyle(userPane).height);
+
      var offset = (windowHeight = contentHeight) / 2;
      var spacer = document.getElementById('spacer');
-     spacer.style.height = offset + 'px';
+     spacer.style.height = (offset - userPaneHeight) + 'px';
 
 }
 

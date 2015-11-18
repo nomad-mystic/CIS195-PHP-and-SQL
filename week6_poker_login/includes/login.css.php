@@ -9,9 +9,31 @@
 
 ?>
 
+#error_header {
+     text-align: center;
+     color: red;
+     font-weight: bold;
+     font-size: 1.5em;
+     min-width: 450px;
+     margin: 0 auto;
+}
+
+#error_detail {
+     text-align: center;
+     color: red;
+     min-width: 450px;
+     font-size: 1em;
+     margin: 2% auto;
+}
+
 input {
      font-size: 1.25em;
 
+}
+
+input[type=submit] {
+     font-size: 1em;
+     padding: 10px;
 }
 
 #login_content {
@@ -39,6 +61,7 @@ input {
 .login_or {
      text-align: center;
      margin: 0 auto;
+     font-weight: bold;
 }
 .login_submit {
      margin: 2% auto;

@@ -30,7 +30,7 @@ header("Pragma: no-cache");
                <?php display_form('POST', TARGET_PAGE); ?>
           </div>
           <div class="float">
-               <img src="<?php echo MAP_PICTURE_PATH;?>" alt="SOURCE=http://www.psdgraphics.com/file/world-map-background.jpg">
+               <img src="images/world_map.jpg" alt="SOURCE=http://www.psdgraphics.com/file/world-map-background.jpg">
           </div>
 
      </body>

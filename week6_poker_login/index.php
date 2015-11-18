@@ -7,7 +7,19 @@
  */
 require_once('includes/poker_constants.php');
 require_once('includes/poker_code.php');
-//require_once('includes/hand_type.php');
+require_once('includes/page_constants.php');
+require_once('includes/utilities.php');
+require_once('includes/login_constants.php');
+
+
+require_secure();
+session_start();
+require_login();
+
+//header("Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0");
+//header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+//header("Pragma: no-cache");
+
 
 $deck = make_deck();
 $hand = deal($deck);
@@ -24,6 +36,8 @@ $hand = deal($deck);
      <script src="includes/poker.js.php"></script>
 </head>
 <body onload="javascript:init();">
+
+     <?php show_user(); ?>
 
      <div id="spacer"></div>
 

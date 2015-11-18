@@ -8,6 +8,14 @@
 
 require_once('includes/poker_constants.php');
 require_once('includes/poker_code.php');
+require_once('includes/page_constants.php');
+require_once('includes/utilities.php');
+require_once('includes/login_constants.php');
+
+
+require_secure();
+session_start();
+require_login();
 
 $deck = json_decode(urldecode($_POST[DECK_KEY]));
 $hand = json_decode(urldecode($_POST[HAND_KEY]));
