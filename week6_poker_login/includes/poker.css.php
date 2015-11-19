@@ -16,32 +16,46 @@
      max-height: <?php echo CARD_IMAGE_PERCENT?>;
      cursor: pointer;
 }
+
 .card {
      text-align: center;
      display: inline-block;
      max-width: <?php echo 100 / HAND_CARDS; ?>%;
      max-height: 100%;
 }
+
 #hand {
      font-size: 0;
      padding: <?php echo HAND_PADDING; ?>
 }
+
 #info {
      text-align: center;
      padding: <?php echo HAND_PADDING; ?>;
      margin: 5% auto 0;
 }
+
 #draw_button {
      background: red;
      color: white;
-     font-family: Impact, "Chaparral Pro";
-     padding: .5em 1.5em ;
-     font-size: 2em;
+<?php echo POKER_FONT; ?>
      border-radius: 1em;
      cursor: pointer;
 }
+
+#hand_type {
+<?php echo POKER_FONT; ?>
+}
+
+#payoff {
+<?php echo POKER_FONT; ?>
+}
+
 #user_pane {
      text-align: right;
+}
+#content {
+     visibility: hidden;
 }
 
 

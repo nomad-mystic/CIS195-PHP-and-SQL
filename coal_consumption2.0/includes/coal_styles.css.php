@@ -6,7 +6,7 @@
  * Time: 4:34 PM
  */
 
-//header('Content-Type: text/css');
+header('Content-Type: text/css');
 require_once('constants.php');
 
  ?>

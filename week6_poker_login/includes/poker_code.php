@@ -28,11 +28,11 @@ function deal(&$deck) {
 
 function show_hand($hand) {
      echo '<div id="hand">' . "\n";
-     for($card = 0; $card < HAND_CARDS; $card++) {
+     for ($card = 0; $card < HAND_CARDS; $card++) {
           show_card($hand[$card], $card);
 
      }
-     echo '</div>';
+     echo '</div>' . "\n";
 }
 
 function show_user()
@@ -41,11 +41,20 @@ function show_user()
      echo      $_SESSION[SESSION_USER_KEY] . ' [<a href="' . LOGOUT_PAGE . '">LOGOUT</a>]' . "\n";
      echo '</div>' . "\n";
 }
+
 function show_card($card, $id)
 {
+//     echo '<div class="card">' . "\n";
+//     echo '<img class="card_image" ' . CARD_ID . '="' . $id . '" src="' . card_name($card) . '" ' . CARD_SRC . '="' . card_name($card) . '">' . "\n";
+//     echo '</div>';
+
      echo '<div class="card">' . "\n";
-     echo '<img class="card_image" ' . CARD_ID . '="' . $id . '" src="' . card_name($card) . '" ' . CARD_SRC . '="' . card_name($card) . '">' . "\n";
-     echo '</div>';
+     echo '<img class="card_image"';
+     echo 'data-id="' . $id . '"' . "\n";
+     echo 'src="' . card_name($card) . '"';
+     echo 'data-src="' . card_name($card) . '"';
+     echo '>' . "\n";
+     echo '</div>' . "\n";
 
 }
 
@@ -56,18 +65,33 @@ function card_name($card)
      return IMAGES . $ranks[$card[RANK_FIELD]] . '_of_' . $suit[$card[SUIT_FIELD]] . '.png';
 }
 
-function show_draw()
+function show_draw_button()
 {
      echo '<div id="info">' . "\n";
      echo '    <span id="draw_button">Draw</span>' . "\n";
      echo '</div>' . "\n";
 }
+function show_type($hand)
+{
+     $type = hand_type($hand);
+     $payoffs = PAYOFFS;
+     $payoff = $payoffs[$type];
 
-function show_content($hand)
+     echo '<div id="info">' . "\n";
+     echo '    <span id="hand_type">' . $type . '</span>' . "\n";
+     echo '    <span id="payoff" style="color: ' . ($payoff > 0 ? "green" : "red") . '">Payoff: ' . $payoff . '</span>' . "\n";
+     echo '</div>' . "\n";
+}
+
+function show_content($hand, $final=FALSE)
 {
      echo '<div id="content">' . "\n";
      show_hand($hand);
-     show_draw();
+     if ($final) {
+          show_type($hand);
+     } else {
+          show_draw_button();
+     }
      echo '</div>';
 }
 
@@ -81,4 +105,14 @@ function output_form($hand, $deck)
           echo '    <input type="hidden" name="' . CARD_KEY . $card . '" id="' . CARD_KEY . $card . '" value="' . KEEP . '">' . "\n";
      }
      echo '</form>';
+}
+function draw_cards(&$hand, &$deck)
+{
+     for ($card = 0; $card < HAND_CARDS; $card++) {
+          $draw = $_POST[CARD_KEY . $card];
+          if ($draw === DRAW) {
+               $hand[$card] = $deck[0];
+               $deck = array_slice($deck, 1);
+          }
+     }
 }

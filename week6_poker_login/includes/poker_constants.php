@@ -8,6 +8,12 @@
 ////////////Style
 const CARD_IMAGE_PERCENT = '95%';
 const HAND_PADDING = '8px';
+const POKER_FONT = <<<POKER
+     font-family: Impact, "Chaparral Pro";
+     padding: .5em 1.5em ;
+     font-size: 2em;
+
+POKER;
 
 
 
@@ -47,9 +53,9 @@ const SUIT_NAMES = [
 
 //////////////////////
 
-const HAND_CARDS = 5;
 
-/////////////
+
+/////////////Form Constants
 const HAND_KEY = 'hand';
 const DECK_KEY = 'deck';
 const CARD_KEY = 'card';
@@ -57,10 +63,43 @@ const CARD_KEY = 'card';
 const KEEP = 'keep';
 const DRAW = 'draw';
 
-const CARD_CLASS = 'car_image';
-const CARD_ID = 'card_id';
+const CARD_CLASS = 'card_image';
 
+///data attributes
+const CARD_ID = 'data-id';
 const CARD_SRC = 'data-src';
+
+////hand constants
+const HAND_CARDS = 5;
+
+const NOTHING = 'No Pair';
+const PAIR_JACKS = 'pair of Jacks or higher';
+const LOW_PAIR = 'One Pair, Less than Jacks';
+const TWO_PAIR = 'Two Pair';
+const TRIPS = 'Three of a Kind';
+const STRAIGHT = 'Straight';
+const FLUSH = 'Flush';
+const BOAT = 'Full House';
+const QUADS = 'four of Kind';
+const STRAIGHT_FLUSH = 'Straight flush';
+const ROYAL_FLUSH = 'royal Flush';
+
+
+
+///Payout
+const PAYOFFS = [
+     NOTHING => 0,
+     LOW_PAIR => 0,
+     PAIR_JACKS => 1,
+     TWO_PAIR => 2,
+     TRIPS => 3,
+     STRAIGHT => 4,
+     FLUSH => 6,
+     BOAT => 9,
+     QUADS => 25,
+     STRAIGHT_FLUSH => 50,
+     ROYAL_FLUSH => 800
+];
 
 
 

@@ -4,14 +4,14 @@
  * Created by Nomad_Mystic on 11/10/2015.
  */
 
-//header('Content-Type: text/javascript');
+header('Content-Type: text/javascript');
 require_once('constants.php');
 require_once('functions.php');
 
 ?>
 
 
-function init(json_data) {
+function init(json_data_1, json_data_2) {
      var ctx = document.getElementById("canvas").getContext("2d");
      var data = {
         labels: [
@@ -48,25 +48,26 @@ function init(json_data) {
         ],
         datasets: [
              {
+                  label: "My second dataset",
+                  fillColor: "rgba(200,233,0,.75)",
+                  strokeColor: "rgba(0,0,0,.5)",
+                  pointColor: "#2F9099",
+                  pointStrokeColor: "#000",
+                  pointHighlightFill: "#fff",
+                  pointHighlightStroke: "rgba(220,220,220,1)",
+                  data: json_data_2
+
+            },
+             {
                label: "My First dataset",
-               fillColor: "rgba(221,66,121,0.3)",
-               strokeColor: "rgba(0,0,0,.5)",
-               pointColor: "#2F9099",
-               pointStrokeColor: "#000",
-               pointHighlightFill: "#fff",
-               pointHighlightStroke: "rgba(220,220,220,1)",
-               data: json_data
-            } //,
-//             {
-//                  label: "My second dataset",
-//                  fillColor: "rgba(42,65,6,.05)",
-//                  strokeColor: "rgba(0,0,0,.5)",
-//                  pointColor: "#2F9099",
-//                  pointStrokeColor: "#000",
-//                  pointHighlightFill: "#fff",
-//                  pointHighlightStroke: "rgba(220,220,220,1)",
-//                  data: [.26, .48, .40, .19, .86, .27, .90, .26, .48, .40, .19, .86, .27, .90]
-//             }
+                  fillColor: "rgba(197,0,100,1)",
+                  strokeColor: "rgba(0,0,0,.5)",
+                  pointColor: "rgba(197,0,100,1)",
+                  pointStrokeColor: "#000",
+                  pointHighlightFill: "#fff",
+                  pointHighlightStroke: "rgba(220,220,220,1)",
+                  data: json_data_1
+             }
 
         ]
 

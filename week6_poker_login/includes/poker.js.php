@@ -11,6 +11,12 @@
 
  ?>
 
+var CARD_KEY = '<?php echo CARD_KEY; ?>';
+var CARD_ID = '<?php echo CARD_ID; ?>';
+var DRAW = '<?php echo DRAW; ?>';
+var KEEP = '<?php echo KEEP; ?>';
+var CARD_SRC = '<?php echo CARD_SRC; ?>';
+
 function centerContent() {
      var userPane = document.getElementById('user_pane');
      var content = document.getElementById('content');
@@ -30,23 +36,23 @@ function submitForm() {
 }
 
 function getDraw(id){
-     return document.getElementById('<?php echo CARD_KEY; ?>' + id).value;
+     return document.getElementById(CARD_KEY + id).value;
 
 }
 
 function setDraw(id, draw) {
-     document.getElementById('<?php echo CARD_KEY; ?>' + id).value = draw;
+     document.getElementById(CARD_KEY + id).value = draw;
 
 }
 
 function toggleCard(card) {
-     var id = card.getAttribute('<?php echo CARD_ID; ?>');
+     var id = card.getAttribute(CARD_ID);
 
-     if(getDraw(id) == '<?php echo DRAW; ?>') {
-          setDraw(id, '<?php echo KEEP; ?>');
-          card.src = card.getAttribute('<?php echo CARD_SRC; ?>');
+     if(getDraw(id) == DRAW) {
+          setDraw(id, KEEP);
+          card.src = card.getAttribute(CARD_SRC);
      } else {
-          setDraw(id, '<?php echo DRAW; ?>');
+          setDraw(id, DRAW);
           card.src = '<?php echo CARD_BACK; ?>';
      }
 }
@@ -58,17 +64,30 @@ function makeCardsClickable() {
                toggleCard(card);
           });
      });
+
+     for(var i = 0; i < '<?php echo HAND_CARDS; ?>'; i++) {
+          setDraw(i, KEEP);
+     }
 }
 
-function init() {
+function showContent() {
+     var content = document.getElementById('content');
+     content.style.visibility = 'visible';
+
+}
+
+function init(final) {
      window.addEventListener('resize', function() {
           centerContent();
      });
      centerContent();
+     showContent();
 
-     var draw_button = document.getElementById('draw_button');
-     draw_button.addEventListener('click', function() {
-          submitForm();
-     });
-     makeCardsClickable();
+     if(!final) {
+          var draw_button = document.getElementById('draw_button');
+          draw_button.addEventListener('click', function() {
+               submitForm();
+          });
+          makeCardsClickable();
+     }
 }
