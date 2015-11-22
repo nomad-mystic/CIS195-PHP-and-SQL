@@ -22,11 +22,11 @@ const TARGET_PAGE = 'country_consumption.php';
 //// STYLES AND IMAGES
 const MAP_IMAGE = 'world_map.jpg';
 const IMAGE_FOLDER = 'images';
-const MAP_PICTURE_PATH = IMAGE_FOLDER . '/' . MAP_IMAGE;
+//const MAP_PICTURE_PATH = IMAGE_FOLDER . '/' . MAP_IMAGE;
 
 
 const STYLES = 'coal_styles.css.php';
-const STYLES_PATH = INCLUDES_FOLDER . '/' . STYLES;
+//const STYLES_PATH = INCLUDES_FOLDER . '/' . STYLES;
 
 const FLOAT_DIRECTION = 'left';
 const FLOAT_WIDTH = '45';

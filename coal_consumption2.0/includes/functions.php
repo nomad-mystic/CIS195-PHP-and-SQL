@@ -99,3 +99,48 @@ function country_names($array_data)
      return $country_names_array;
 
 }
+
+function show_user_info()
+{
+//     $balance = get_session_value(BALANCE_KEY);
+//     $hands_played = get_session_value(HANDS_PLAYED_KEY);
+//     if ($hands_played !== '' && $hands_played !== 0) {
+//          $expected = number_format($balance / $hands_played, 4);
+//     } else {
+//          $expected = 'UNKNOWN';
+//     }
+     echo '<span class="fa fa-user">';
+     echo      get_session_value(SESSION_USER_KEY);
+     echo '    <a href="' . LOGOUT_PAGE . '">LOGOUT</a>';
+     echo '</span>';
+//     echo '    BALANCE: ' . $balance . "<br>\n";
+//     echo '    HANDS PLAYED: ' . $hands_played . "<br>\n";
+//     echo '    EXPECTED RETURN: ' . $expected . ' UNITS/HAND';
+     echo '</div>' . "\n";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

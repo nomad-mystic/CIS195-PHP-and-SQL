@@ -21,8 +21,19 @@ function make_deck() {
 }
 
 function deal(&$deck) {
-     $hand = array_slice($deck, 0, HAND_CARDS);
-     $deck = array_slice($deck, HAND_CARDS);
+
+     if (get_session_value(FINAL_KEY)) {
+          $hand = array_slice($deck, 0, HAND_CARDS);
+          $deck = array_slice($deck, HAND_CARDS);
+          set_session_value(HAND_KEY, $hand);
+          set_session_value(DECK_KEY, $deck);
+          set_session_value(FINAL_KEY, FALSE);
+//          set_session_value(HANDS_PLAYED_KEY, (get_session_value(HANDS_PLAYED_KEY) + 1));
+//          set_session_value(BALANCE_KEY, (get_session_value(BALANCE_KEY) - 1));
+          return $hand;
+     }
+     $hand = get_session_value(HAND_KEY);
+     $deck = get_session_value(DECK_KEY);
      return $hand;
 }
 
@@ -37,8 +48,19 @@ function show_hand($hand) {
 
 function show_user()
 {
+//     $balance = get_session_value(BALANCE_KEY);
+//     $hands_played = get_session_value(HANDS_PLAYED_KEY);
+//     if ($hands_played !== '' && $hands_played !== 0) {
+//          $expected = number_format($balance / $hands_played, 4);
+//     } else {
+//          $expected = 'UNKNOWN';
+//     }
+
      echo '<div id="user_pane">' . "\n";
-     echo      $_SESSION[SESSION_USER_KEY] . ' [<a href="' . LOGOUT_PAGE . '">LOGOUT</a>]' . "\n";
+     echo      get_session_value(SESSION_USER_KEY) . ' [<a href="' . LOGOUT_PAGE . '">LOGOUT</a>]' . "<br>\n";
+//     echo '    BALANCE: ' . $balance . "<br>\n";
+//     echo '    HANDS PLAYED: ' . $hands_played . "<br>\n";
+//     echo '    EXPECTED RETURN: ' . $expected . ' UNITS/HAND';
      echo '</div>' . "\n";
 }
 
@@ -99,8 +121,10 @@ function output_form($hand, $deck)
 {
 
      echo '<form method="POST" action="draw.php" id="draw_form">' . "\n";
-     echo '    <input type="hidden" name="' . HAND_KEY . '" value="' . urlencode(json_encode($hand)) . '">' . "\n";
-     echo '    <input type="hidden" name="' . DECK_KEY . '" value="' . urlencode(json_encode($deck)) . '">' . "\n";
+//     echo '    <input type="hidden" name="' . HAND_KEY . '" value="' . urlencode(json_encode($hand)) . '">' . "\n";
+//     echo '    <input type="hidden" name="' . DECK_KEY . '" value="' . urlencode(json_encode($deck)) . '">' . "\n";
+
+
      for ($card = 0; $card < HAND_CARDS; $card++) {
           echo '    <input type="hidden" name="' . CARD_KEY . $card . '" id="' . CARD_KEY . $card . '" value="' . KEEP . '">' . "\n";
      }
@@ -108,6 +132,9 @@ function output_form($hand, $deck)
 }
 function draw_cards(&$hand, &$deck)
 {
+     if (get_session_value(FINAL_KEY)) {
+          return;
+     }
      for ($card = 0; $card < HAND_CARDS; $card++) {
           $draw = $_POST[CARD_KEY . $card];
           if ($draw === DRAW) {
@@ -115,4 +142,10 @@ function draw_cards(&$hand, &$deck)
                $deck = array_slice($deck, 1);
           }
      }
+//     $type = hand_type($hand);
+//     $payoffs = PAYOFFS;
+//     set_session_value(BALANCE_KEY, $payoffs[$type]);
+     set_session_value(HAND_KEY, $hand);
+     set_session_value(DECK_KEY, $deck);
+     set_session_value(FINAL_KEY, TRUE);
 }

@@ -77,26 +77,26 @@ body {
      padding: 0;
      margin: 2% 2%;
 }
-body > div:nth-child(1) {
+body > div:nth-child(2) {
      background: #fff;
      border: <?php echo BORDER; ?>;
      border-radius: <?php echo BORDER_RADIUS; ?>;
 
 }
-body > div:nth-child(1) h1 {
+body > div:nth-child(2) h1 {
      font-size: 3em;
      padding: <?php echo TEXT_PADDING; ?>%;
 }
-body > div:nth-child(1) h3 {
+body > div:nth-child(2) h3 {
      padding: <?php echo TEXT_PADDING; ?>%;
      font-size: <?php echo BASE_FONT_SIZE; ?>;
      line-height: 1.25em;
 }
-body > div:nth-child(1) h4 {
+body > div:nth-child(2) h4 {
      padding: <?php echo TEXT_PADDING; ?>%;
      font-size: <?php echo BASE_FONT_SIZE; ?>;
 }
-body > div:nth-child(2) img {
+body > div:nth-child(3) img {
      width: 100%;
      background: <?php echo WHITE_BACKGROUND; ?>;
      padding: 2%;
@@ -112,6 +112,20 @@ input[type="text"] {
 }
 input[type="submit"] {
      font-size: <?php echo BASE_FONT_SIZE; ?>;
+}
+.user_information {
+     height: 60px;
+     background: #222;
+     box-shadow: 0 1px 0 0 rgba(0,0,0,.25);
+}
+.user_information span {
+     float: right;
+
+}
+.user_information span:before {
+     color: #fff;
+     padding: 0 2% 0 0;
+     font-size: 2em;
 }
 /*country_consumption.php----*/
 .chosen_country {
@@ -134,6 +148,8 @@ input[type="submit"] {
      border-radius: <?php echo BORDER_RADIUS; ?>;
      border: <?php echo BORDER; ?>;
 }
+
+
 
 
 

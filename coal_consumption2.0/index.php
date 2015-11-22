@@ -5,12 +5,23 @@
  * Date: 11/5/2015
  * Time: 12:48 AM
  */
-require_once('includes/constants.php');
-require_once('includes/functions.php');
+
 
 header("Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0");
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 header("Pragma: no-cache");
+
+require_once('includes/constants.php');
+require_once('includes/functions.php');
+require_once('includes/coal_page_constants.php');
+require_once('includes/utilities.php');
+require_once('includes/coal_login_constants.php');
+
+
+
+require_secure();
+session_start();
+require_login();
 
 ?>
 
@@ -18,7 +29,7 @@ header("Pragma: no-cache");
 <html lang="en">
      <?php require_once('includes/main_head.php'); ?>
      <body>
-
+          <div class="user_information"><?php show_user_info(); ?></div>
           <div class="float">
                <h1>Annual Coal Consumption by Country</h1>
 
@@ -30,7 +41,7 @@ header("Pragma: no-cache");
                <?php display_form('POST', TARGET_PAGE); ?>
           </div>
           <div class="float">
-               <img src="<?php echo MAP_PICTURE_PATH; ?>" alt="SOURCE=http://www.psdgraphics.com/file/world-map-background.jpg">
+               <img src="images/world_map.jpg" alt="SOURCE=http://www.psdgraphics.com/file/world-map-background.jpg">
           </div>
 
      </body>

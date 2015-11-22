@@ -2,10 +2,11 @@
 /**
  * Created by PhpStorm.
  * User: Nomad_Mystic
- * Date: 11/16/2015
- * Time: 11:22 PM
+ * Date: 11/21/2015
+ * Time: 8:48 PM
  */
-require_once('login_constants.php');
+
+require_once('coal_login_constants.php');
 
 
 function error_message($type, $detail)
@@ -56,6 +57,7 @@ function register($username, $password, $confirm)
      }
 
      $user = look_up_key_value($username, USER_ACCOUNT_FILE);
+
      if (!empty($user)) {
           return error_message(E_REGISTER, E_ACCOUNT_EXISTS);
      }

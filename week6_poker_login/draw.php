@@ -18,9 +18,11 @@ require_secure();
 session_start();
 require_login();
 
-$deck = json_decode(urldecode($_POST[DECK_KEY]));
-$hand = json_decode(urldecode($_POST[HAND_KEY]));
+//$deck = json_decode(urldecode($_POST[DECK_KEY]));
+//$hand = json_decode(urldecode($_POST[HAND_KEY]));
 
+$deck = get_session_value(DECK_KEY);
+$hand = get_session_value(HAND_KEY);
 
 draw_cards($hand, $deck);
 

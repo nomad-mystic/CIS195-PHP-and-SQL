@@ -7,6 +7,7 @@
  */
 
 const FILE_KEY_FILED = 0;
+
 function require_secure()
 {
      if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] !== 'on') {
@@ -22,6 +23,7 @@ function require_login()
           exit();
      }
 }
+
 function get_post_value($key)
 {
      if (isset($_POST[$key])) {
@@ -29,6 +31,7 @@ function get_post_value($key)
      }
      return '';
 }
+
 function get_session_value($key)
 {
      if (isset($_SESSION[$key])) {
@@ -36,11 +39,13 @@ function get_session_value($key)
      }
      return '';
 }
+
 function set_session_value($key, $value)
 {
      $_SESSION[$key] = $value;
 
 }
+
 function look_up_key_value($key, $filename)
 {
      $file = fopen($filename, 'r');
@@ -83,7 +88,7 @@ function destroy_session()
      $session_info = session_get_cookie_params();
      $_SESSION = [];
      setcookie(session_name(), '', 0, $session_info['path'], $session_info['domain'],
-          $session_info['sesure'], $session_info['httponly']);
+          $session_info['secure'], $session_info['httponly']);
      session_destroy();
 }
 

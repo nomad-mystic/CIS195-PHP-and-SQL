@@ -4,7 +4,7 @@
  * Created by Nomad_Mystic on 11/10/2015.
  */
 
-header('Content-Type: text/javascript');
+//header('Content-Type: text/javascript');
 require_once('constants.php');
 require_once('functions.php');
 
@@ -49,7 +49,7 @@ function init(json_data_1, json_data_2) {
         datasets: [
              {
                   label: "My second dataset",
-                  fillColor: "rgba(200,233,0,.75)",
+                  fillColor: "rgba(200,233,0,.50)",
                   strokeColor: "rgba(0,0,0,.5)",
                   pointColor: "#2F9099",
                   pointStrokeColor: "#000",
@@ -60,7 +60,7 @@ function init(json_data_1, json_data_2) {
             },
              {
                label: "My First dataset",
-                  fillColor: "rgba(197,0,100,1)",
+                  fillColor: "rgba(197,0,100,.50)",
                   strokeColor: "rgba(0,0,0,.5)",
                   pointColor: "rgba(197,0,100,1)",
                   pointStrokeColor: "#000",

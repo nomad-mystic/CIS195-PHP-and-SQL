@@ -64,6 +64,11 @@ const KEEP = 'keep';
 const DRAW = 'draw';
 
 const CARD_CLASS = 'card_image';
+const FINAL_KEY = 'final';
+
+const BALANCE_KEY = 'balance';
+const HANDS_PLAYED_KEY = 'hands_played';
+
 
 ///data attributes
 const CARD_ID = 'data-id';
