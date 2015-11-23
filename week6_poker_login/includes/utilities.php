@@ -29,6 +29,7 @@ function get_post_value($key)
      }
      return '';
 }
+
 function get_session_value($key)
 {
      if (isset($_SESSION[$key])) {
@@ -36,6 +37,7 @@ function get_session_value($key)
      }
      return '';
 }
+
 function set_session_value($key, $value)
 {
      $_SESSION[$key] = $value;

@@ -68,7 +68,7 @@ table {
 body {
      max-width: 100%;
      padding: 0;
-     background: aqua;
+     background: <?php echo BLUE_BACKGROUND; ?>;
 }
 /* main.php----*/
 .float {
@@ -77,56 +77,109 @@ body {
      padding: 0;
      margin: 2% 2%;
 }
-body > div:nth-child(2) {
+body > section > div:nth-child(2) {
      background: #fff;
      border: <?php echo BORDER; ?>;
      border-radius: <?php echo BORDER_RADIUS; ?>;
 
 }
-body > div:nth-child(2) h1 {
+.float h1 {
      font-size: 3em;
      padding: <?php echo TEXT_PADDING; ?>%;
 }
-body > div:nth-child(2) h3 {
+.float h3 {
      padding: <?php echo TEXT_PADDING; ?>%;
      font-size: <?php echo BASE_FONT_SIZE; ?>;
      line-height: 1.25em;
 }
-body > div:nth-child(2) h4 {
+.float h4 {
      padding: <?php echo TEXT_PADDING; ?>%;
      font-size: <?php echo BASE_FONT_SIZE; ?>;
 }
-body > div:nth-child(3) img {
+body > section > div:nth-child(3) img {
      width: 100%;
      background: <?php echo WHITE_BACKGROUND; ?>;
      padding: 2%;
      border-radius: <?php echo BORDER_RADIUS; ?>;
 }
 form {
-     margin: 5% 0 2% 10%;
+     margin: 2%;
+     display: block;
 }
 input[type="text"] {
-     font-size: <?php echo BASE_FONT_SIZE; ?>;
+     font-size: 1em;
      border-radius: 4px;
      border: <?php echo BORDER; ?>;
 }
-input[type="submit"] {
+.wrapper input[type="submit"]  {
+     border: <?php echo BORDER_RADIUS; ?>;
+     -webkit-border-radius: <?php echo BORDER_RADIUS; ?>;
+     -moz-border-radius: <?php echo BORDER_RADIUS; ?>;
+     border-radius: <?php echo BORDER_RADIUS; ?>;
      font-size: <?php echo BASE_FONT_SIZE; ?>;
+     padding: .5em;
+     cursor: pointer;
+     -webkit-transition: <?php echo BUTTON_HOVER_TRANISTION; ?>;
+     -moz-transition: <?php echo BUTTON_HOVER_TRANISTION; ?>;
+     -ms-transition: <?php echo BUTTON_HOVER_TRANISTION; ?>;
+     -o-transition: <?php echo BUTTON_HOVER_TRANISTION; ?>;
+     transition: <?php echo BUTTON_HOVER_TRANISTION; ?>;
+     margin: 2% auto;
+     display: block;
 }
-.user_information {
+.wrapper input[type="submit"]:hover {
+     -webkit-box-shadow: 0 2px  1px rgba(0,0,0,.10);
+     -moz-box-shadow: 0 2px  1px rgba(0,0,0,.10);
+     box-shadow: 0 2px  1px rgba(0,0,0,.10);
+}
+.user_information_area {
      height: 60px;
      background: #222;
      box-shadow: 0 1px 0 0 rgba(0,0,0,.25);
 }
-.user_information span {
+.user_info_inner {
      float: right;
-
+     width: 30%;
 }
-.user_information span:before {
+.user_info_inner span {
+     float: left;
+     margin: 4% auto;
+}
+.user_information_area span:before {
      color: #fff;
      padding: 0 2% 0 0;
-     font-size: 2em;
+     font-size: 1em;
 }
+.user_info_inner h2 {
+     font-size: 1em;
+     margin: 4% 5% 2% 2%;
+     color: #fff;
+     float: left;
+}
+.logout_link {
+     display: inline-block;
+     float: left;
+     margin: 2% auto;
+}
+.logout_link a {
+     background: <?php echo WHITE_BACKGROUND; ?>;
+     display: block;
+     padding: .5em;
+     text-decoration: none;
+     color: #fff;
+     border: <?php echo BORDER_RADIUS; ?>;
+     -webkit-border-radius: <?php echo BORDER_RADIUS; ?>;
+     -moz-border-radius: <?php echo BORDER_RADIUS; ?>;
+     border-radius: <?php echo BORDER_RADIUS; ?>;
+     padding: .5em;
+     cursor: pointer;
+     -webkit-transition: all 1s;
+     -moz-transition: all 1s;
+     -ms-transition: all 1s;
+     -o-transition: all 1s;
+     transition: all 1s;
+}
+
 /*country_consumption.php----*/
 .chosen_country {
      font-size: 3em;

@@ -41,7 +41,7 @@ $error_message = login_or_register(
 <head>
      <meta charset="UTF-8">
      <title>Login or Register</title>
-<!--     <link rel="stylesheet" href="includes/coal_login.css.php">-->
+     <link rel="stylesheet" href="includes/coal_login.css.php">
 
 </head>
 <body>

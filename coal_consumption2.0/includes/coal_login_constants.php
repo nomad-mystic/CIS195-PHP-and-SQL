@@ -17,8 +17,8 @@ const REGISTER_PASSWORD_KEY = 'register_password';
 const CONFIRM_PASSWORD_KEY = 'register_confirm_password';
 const REGISTER_BUTTON_VALUE = 'register';
 
-const SESSION_USER_KEY = 'username';
 
+const SESSION_USER_KEY = 'username';
 
 // Fields
 const ACCOUNT_USERNAME_FIELD = 0;
@@ -26,8 +26,6 @@ const ACCOUNT_PASSWORD_HASH_FIELD = 1;
 
 
 //Files
-
-
 const USER_ACCOUNT_FILE = 'data/users.csv';
 
 const E_LOGIN = 'Error Logging In';

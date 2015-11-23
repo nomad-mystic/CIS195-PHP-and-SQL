@@ -29,20 +29,21 @@ require_login();
 <html lang="en">
      <?php require_once('includes/main_head.php'); ?>
      <body>
-          <div class="user_information"><?php show_user_info(); ?></div>
+     <section class="wrapper">
+          <div class="user_information_area"><?php show_user_info(); ?></div>
           <div class="float">
                <h1>Annual Coal Consumption by Country</h1>
 
                <h3>Total annual coal consumption by country from 1980 to 2008 (available as Quadrillion Btu). Downloaded from
                     the Energy Information Administration (EIA)'s International Energy Statistics portal</h3>
 
-               <h4>Please Enter a country to see the coal consumption of that country.</h4>
+               <h4>Please enter two countries to see the coal consumption of those countries over the course of 29 years!!</h4>
 
                <?php display_form('POST', TARGET_PAGE); ?>
           </div>
           <div class="float">
                <img src="images/world_map.jpg" alt="SOURCE=http://www.psdgraphics.com/file/world-map-background.jpg">
           </div>
-
+     </section>
      </body>
 </html>
