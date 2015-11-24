@@ -17,17 +17,21 @@ const YEARS = 29;
 const CHOSEN_COUNTRY_KEY_1 = 'user_input_1';
 const CHOSEN_COUNTRY_KEY_2 = 'user_input_2';
 
+// FILES AND PATHWAYS
 const TARGET_PAGE = 'country_consumption.php';
+const STYLES = 'coal_styles.css.php';
+const STYLES_PATH = INCLUDES_FOLDER . '/' . STYLES;
 
-//// STYLES AND IMAGES
 const MAP_IMAGE = 'world_map.jpg';
 const IMAGE_FOLDER = 'images';
-//const MAP_PICTURE_PATH = IMAGE_FOLDER . '/' . MAP_IMAGE;
+const MAP_PICTURE_PATH = IMAGE_FOLDER . '/' . MAP_IMAGE;
 
+const BOWER = 'bower_components';
+const FONT_AWESOME_PATH = '/font-awesome/css/font-awesome.css';
+const CHART_JS_PATH = '/Chart.js/Chart.js';
+const CUSTOM_JS_PATH = 'includes/coal.js.php';
 
-const STYLES = 'coal_styles.css.php';
-//const STYLES_PATH = INCLUDES_FOLDER . '/' . STYLES;
-
+//// STYLES
 const FLOAT_DIRECTION = 'left';
 const FLOAT_WIDTH = '45';
 
@@ -37,5 +41,3 @@ const BORDER_RADIUS = '4px';
 const TEXT_PADDING = '2';
 const BORDER = 'solid rgba(0,0,0,.25) 4px';
 const BASE_FONT_SIZE = '1.5em';
-///Buttons
-const BUTTON_HOVER_TRANSITION = 'all 2s';

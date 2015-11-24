@@ -40,11 +40,6 @@ function get_session_value($key)
      return '';
 }
 
-function set_session_value($key, $value)
-{
-     $_SESSION[$key] = $value;
-}
-
 function look_up_key_value($key, $filename)
 {
      $file = fopen($filename, 'r');
