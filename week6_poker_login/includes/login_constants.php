@@ -26,8 +26,6 @@ const ACCOUNT_PASSWORD_HASH_FIELD = 1;
 
 
 //Files
-
-
 const USER_ACCOUNT_FILE = 'data/users.csv';
 
 const E_LOGIN = 'Error Logging In';

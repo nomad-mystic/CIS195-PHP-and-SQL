@@ -22,6 +22,9 @@ const IMAGES = 'images/';
 const INCLUDES = 'includes/';
 const CARD_BACK = IMAGES . 'back.png';
 const CARD_BLANK = IMAGES . 'blank.png';
+const HOLD_IMAGE = IMAGES . 'hold.png';
+
+
 const RANK_COUNT = 13;
 const SUIT_COUNT = 4;
 
@@ -68,7 +71,7 @@ const FINAL_KEY = 'final';
 
 const BALANCE_KEY = 'balance';
 const HANDS_PLAYED_KEY = 'hands_played';
-
+const HOLD_KEY = 'hold';
 
 ///data attributes
 const CARD_ID = 'data-id';

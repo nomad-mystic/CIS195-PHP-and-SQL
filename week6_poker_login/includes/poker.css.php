@@ -16,8 +16,17 @@
      max-height: <?php echo CARD_IMAGE_PERCENT?>;
      cursor: pointer;
 }
-
+.hold_image {
+     visibility: hidden;
+     position: absolute;
+     max-width: 100%;
+     min-height: 100%;
+     cursor: pointer;
+     top: 0;
+     left: <?php echo (100 - CARD_IMAGE_PERCENT) / 2; ?>%;
+}
 .card {
+     position: relative;
      text-align: center;
      display: inline-block;
      max-width: <?php echo 100 / HAND_CARDS; ?>%;
@@ -53,9 +62,16 @@
 
 #user_pane {
      text-align: right;
+     font-family: sans-serif;
+     font-weight: bold;
+
 }
 #content {
      visibility: hidden;
 }
-
+#logout {
+     font-size: .75em;
+     color: green;
+     text-decoration: none;
+}
 

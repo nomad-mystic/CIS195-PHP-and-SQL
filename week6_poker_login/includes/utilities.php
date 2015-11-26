@@ -7,6 +7,25 @@
  */
 
 const FILE_KEY_FILED = 0;
+const ACCOUNT_DATA_FILE = 'data/account_data.csv';
+const SESSION_DATA_ACCOUNT_USERNAME_FIELD = 0;
+const SESSION_DATA_ACCOUNT_SESSION_FIELD = 1;
+
+function save_session()
+{
+     $username = get_session_value(SESSION_USER_KEY);
+     add_key_value($username, [$username, serialize($_SESSION)], ACCOUNT_DATA_FILE);
+}
+
+function restore_session()
+{
+     $username = get_session_value(SESSION_USER_KEY);
+     $session_data = look_up_key_value($username, ACCOUNT_DATA_FILE);
+     if (!empty($session_data)) {
+          $_SESSION = unserialize($session_data[SESSION_DATA_ACCOUNT_SESSION_FIELD]);
+     }
+}
+
 function require_secure()
 {
      if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] !== 'on') {
@@ -21,6 +40,7 @@ function require_login()
           header('Location: ' . LOGIN_PAGE);
           exit();
      }
+     restore_session();
 }
 function get_post_value($key)
 {
@@ -41,6 +61,7 @@ function get_session_value($key)
 function set_session_value($key, $value)
 {
      $_SESSION[$key] = $value;
+     save_session();
 
 }
 function look_up_key_value($key, $filename)

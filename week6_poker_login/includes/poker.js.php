@@ -12,10 +12,10 @@
  ?>
 
 var CARD_KEY = '<?php echo CARD_KEY; ?>';
+var HOLD_KEY = '<?php echo HOLD_KEY; ?>';
 var CARD_ID = '<?php echo CARD_ID; ?>';
 var DRAW = '<?php echo DRAW; ?>';
 var KEEP = '<?php echo KEEP; ?>';
-var CARD_SRC = '<?php echo CARD_SRC; ?>';
 
 function centerContent() {
      var userPane = document.getElementById('user_pane');
@@ -47,18 +47,19 @@ function setDraw(id, draw) {
 
 function toggleCard(card) {
      var id = card.getAttribute(CARD_ID);
+     var hold = document.getElementById(HOLD_KEY + id);
 
      if(getDraw(id) == DRAW) {
           setDraw(id, KEEP);
-          card.src = card.getAttribute(CARD_SRC);
+          hold.style.visibility = 'visible';
      } else {
           setDraw(id, DRAW);
-          card.src = '<?php echo CARD_BACK; ?>';
+          hold.style.visibility = 'hidden';
      }
 }
 
 function makeCardsClickable() {
-     var cards = [].slice.call(document.getElementsByClassName('<?php echo CARD_CLASS; ?>'));
+     var cards = [].slice.call(document.getElementsByClassName(CARD_KEY));
      cards.forEach(function(card) {
           card.addEventListener('click', function() {
                toggleCard(card);
@@ -66,7 +67,7 @@ function makeCardsClickable() {
      });
 
      for(var i = 0; i < '<?php echo HAND_CARDS; ?>'; i++) {
-          setDraw(i, KEEP);
+          setDraw(i, DRAW);
      }
 }
 

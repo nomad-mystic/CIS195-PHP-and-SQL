@@ -22,14 +22,14 @@ function make_deck() {
 
 function deal(&$deck) {
 
-     if (get_session_value(FINAL_KEY)) {
+     if (get_session_value(FINAL_KEY) === '' || get_session_value(FINAL_KEY)) {
           $hand = array_slice($deck, 0, HAND_CARDS);
           $deck = array_slice($deck, HAND_CARDS);
           set_session_value(HAND_KEY, $hand);
           set_session_value(DECK_KEY, $deck);
           set_session_value(FINAL_KEY, FALSE);
-//          set_session_value(HANDS_PLAYED_KEY, (get_session_value(HANDS_PLAYED_KEY) + 1));
-//          set_session_value(BALANCE_KEY, (get_session_value(BALANCE_KEY) - 1));
+          set_session_value(HANDS_PLAYED_KEY, (get_session_value(HANDS_PLAYED_KEY) + 1));
+          set_session_value(BALANCE_KEY, (get_session_value(BALANCE_KEY) - 1));
           return $hand;
      }
      $hand = get_session_value(HAND_KEY);
@@ -48,34 +48,41 @@ function show_hand($hand) {
 
 function show_user()
 {
-//     $balance = get_session_value(BALANCE_KEY);
-//     $hands_played = get_session_value(HANDS_PLAYED_KEY);
-//     if ($hands_played !== '' && $hands_played !== 0) {
-//          $expected = number_format($balance / $hands_played, 4);
-//     } else {
-//          $expected = 'UNKNOWN';
-//     }
+     $balance = get_session_value(BALANCE_KEY);
+     $hands_played = get_session_value(HANDS_PLAYED_KEY);
+     if ($hands_played !== '' && $hands_played !== 0) {
+          $expected = number_format($balance / $hands_played, 4);
+     } else {
+          $expected = 'UNKNOWN';
+     }
 
      echo '<div id="user_pane">' . "\n";
-     echo      get_session_value(SESSION_USER_KEY) . ' [<a href="' . LOGOUT_PAGE . '">LOGOUT</a>]' . "<br>\n";
-//     echo '    BALANCE: ' . $balance . "<br>\n";
-//     echo '    HANDS PLAYED: ' . $hands_played . "<br>\n";
-//     echo '    EXPECTED RETURN: ' . $expected . ' UNITS/HAND';
+     echo      get_session_value(SESSION_USER_KEY) . ' [<a id="logout" href="' . LOGOUT_PAGE . '">LOGOUT</a>]' . "<br>\n";
+     echo '    BALANCE: ' . colored_number($balance) . "<br>\n";
+     echo '    HANDS PLAYED: ' . $hands_played . "<br>\n";
+     echo '    EXPECTED RETURN: ' . colored_number($expected) . ' UNITS/HAND';
      echo '</div>' . "\n";
+}
+
+function colored_number($number)
+{
+     return '<span style="color: ' . ($number < 0 ? "red" : "green") . ';">' . $number . '</span>';
 }
 
 function show_card($card, $id)
 {
-//     echo '<div class="card">' . "\n";
-//     echo '<img class="card_image" ' . CARD_ID . '="' . $id . '" src="' . card_name($card) . '" ' . CARD_SRC . '="' . card_name($card) . '">' . "\n";
-//     echo '</div>';
 
-     echo '<div class="card">' . "\n";
-     echo '<img class="card_image"';
-     echo 'data-id="' . $id . '"' . "\n";
-     echo 'src="' . card_name($card) . '"';
-     echo 'data-src="' . card_name($card) . '"';
+     echo '<div class="card" ';
+     echo ' ' . CARD_ID . '="' . $id . '"' . "\n";
      echo '>' . "\n";
+     echo '          <img class="card_image"';
+
+     echo 'src="' . card_name($card) . '"';
+//     echo 'data-src="' . card_name($card) . '"';
+     echo '>' . "\n";
+     echo '                 <img class="hold_image"';
+     echo ' id="' . HOLD_KEY . $id . '"';
+     echo ' src="' . HOLD_IMAGE . '">' . "\n";
      echo '</div>' . "\n";
 
 }
@@ -142,9 +149,9 @@ function draw_cards(&$hand, &$deck)
                $deck = array_slice($deck, 1);
           }
      }
-//     $type = hand_type($hand);
-//     $payoffs = PAYOFFS;
-//     set_session_value(BALANCE_KEY, $payoffs[$type]);
+     $type = hand_type($hand);
+     $payoffs = PAYOFFS;
+     set_session_value(BALANCE_KEY, get_session_value(BALANCE_KEY) + $payoffs[$type]);
      set_session_value(HAND_KEY, $hand);
      set_session_value(DECK_KEY, $deck);
      set_session_value(FINAL_KEY, TRUE);
