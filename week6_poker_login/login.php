@@ -11,7 +11,8 @@ require_once('includes/login_constants.php');
 require_once('includes/utilities.php');
 require_once('includes/login_code.php');
 require_once('includes/page_constants.php');
-
+require_once('includes/poker_db_constants.php');
+require_once('includes/poker_db_code.php');
 
 require_secure();
 

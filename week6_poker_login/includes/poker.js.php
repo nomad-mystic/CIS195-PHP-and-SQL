@@ -24,10 +24,15 @@ function centerContent() {
      var contentHeight = parseInt(window.getComputedStyle(content).height);
      var userPaneHeight = parseInt(window.getComputedStyle(userPane).height);
 
-     var offset = (windowHeight = contentHeight) / 2;
+     var offset = (windowHeight - contentHeight) / 2;
      var spacer = document.getElementById('spacer');
      spacer.style.height = (offset - userPaneHeight) + 'px';
 
+     var choicesPane = document.getElementById('choices');
+     if(choicesPane) {
+          var choicesHeight = parseInt(window.getComputedStyle(choicesPane).height);
+          choicesPane.style.top = (windowHeight - choicesHeight) + 'px';
+     }
 }
 
 function submitForm() {

@@ -14,13 +14,13 @@ const SESSION_DATA_ACCOUNT_SESSION_FIELD = 1;
 function save_session()
 {
      $username = get_session_value(SESSION_USER_KEY);
-     add_key_value($username, [$username, serialize($_SESSION)], ACCOUNT_DATA_FILE);
+     add_session($username, serialize($_SESSION));
 }
 
 function restore_session()
 {
      $username = get_session_value(SESSION_USER_KEY);
-     $session_data = look_up_key_value($username, ACCOUNT_DATA_FILE);
+     $session_data = lookup_session($username);
      if (!empty($session_data)) {
           $_SESSION = unserialize($session_data[SESSION_DATA_ACCOUNT_SESSION_FIELD]);
      }
@@ -61,7 +61,7 @@ function get_session_value($key)
 function set_session_value($key, $value)
 {
      $_SESSION[$key] = $value;
-     save_session();
+
 
 }
 function look_up_key_value($key, $filename)

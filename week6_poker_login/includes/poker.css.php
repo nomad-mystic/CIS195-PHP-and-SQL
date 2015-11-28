@@ -74,4 +74,12 @@
      color: green;
      text-decoration: none;
 }
+#choices {
+     display: inline-block;;
+     position: absolute;
+     font-family:  sans-serif;
+     font-weight: bold;
+     font-size: .75em;
+
+}
 

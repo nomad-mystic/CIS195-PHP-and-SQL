@@ -30,6 +30,7 @@ function deal(&$deck) {
           set_session_value(FINAL_KEY, FALSE);
           set_session_value(HANDS_PLAYED_KEY, (get_session_value(HANDS_PLAYED_KEY) + 1));
           set_session_value(BALANCE_KEY, (get_session_value(BALANCE_KEY) - 1));
+          save_session();
           return $hand;
      }
      $hand = get_session_value(HAND_KEY);
@@ -78,7 +79,6 @@ function show_card($card, $id)
      echo '          <img class="card_image"';
 
      echo 'src="' . card_name($card) . '"';
-//     echo 'data-src="' . card_name($card) . '"';
      echo '>' . "\n";
      echo '                 <img class="hold_image"';
      echo ' id="' . HOLD_KEY . $id . '"';
@@ -155,4 +155,110 @@ function draw_cards(&$hand, &$deck)
      set_session_value(HAND_KEY, $hand);
      set_session_value(DECK_KEY, $deck);
      set_session_value(FINAL_KEY, TRUE);
+     save_session();
+}
+
+function  grouped_hand($hand)
+{
+     $suits = [[], [], [], []];
+     foreach ($hand as $card) {
+          if ($card[RANK_FIELD] === 0){
+               $suits[$card[SUIT_FIELD]][] = [13, $card[SUIT_FIELD]];
+          } else {
+               $suits[$card[SUIT_FIELD]][] = $card;
+          }
+     }
+     foreach ($suits as &$suit) {
+          rsort($suit);
+     }
+     usort($suits, function($v1, $v2) {
+          $l1 = count($v1);
+          $l2 = count($v2);
+
+          if ($l1 < $l2) {
+               return 1;
+          }
+          if ($l2 < $l1) {
+               return -1;
+          }
+          for ($i=0; 1 < $l1; $i++) {
+               if ($v1[$i][RANK_FIELD] < $v2[$i][RANK_FIELD]) {
+                    return 1;
+               }
+               if ($v2[$i][RANK_FIELD] < $v1[$i][RANK_FIELD]) {
+                    return -1;
+               }
+          }
+          return 0;
+     });
+     $groups = array_map(function($group){
+          $names = array_map(function($card) {
+               $rank_names = SHORT_RANK_NAMES;
+               return $rank_names[$card[RANK_FIELD]];
+          }, $group);
+          return join("", $names);
+     }, $suits);
+     $filtered = array_filter($groups, function($group) {
+          return strlen($group) > 0;
+     });
+     $grouped = '(' . join(")(", $filtered) . ')';
+     return $grouped;
+}
+
+function generate_choices($hand)
+{
+     $choices = [];
+     $grouped_hands = [];
+     for ($choice_bits = 0; $choice_bits < MAX_CHOICE; $choice_bits++) {
+        $keep = [];
+          if ($choice_bits & 1) $keep[] = $hand[0];
+          if ($choice_bits & 2) $keep[] = $hand[1];
+          if ($choice_bits & 4) $keep[] = $hand[2];
+          if ($choice_bits & 8) $keep[] = $hand[3];
+          if ($choice_bits & 16) $keep[] = $hand[4];
+          $group = grouped_hand($keep);
+          $choice = [$group, 0, "", $keep, count($keep), $choice_bits];
+          $grouped_hands[] = $group;
+          $choices[] = $choice;
+     }
+     $group_where = "'" . join("', '", $grouped_hands) . "'";
+     $query = <<<QUERY
+SELECT draw_values.grouped_hand, expected_return, name
+FROM draw_values
+LEFT JOIN interesting_hands
+ON draw_values.grouped_hand = interesting_hands.grouped_hand
+WHERE draw_values.grouped_hand IN ($group_where);
+QUERY;
+
+     $db = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
+     $result = $db->query($query);
+     $scores = $result->fetch_all(MYSQLI_NUM);
+     $scores_assoc = [];
+
+     foreach($scores as $score) {
+          $scores_assoc[$score[SCORES_GROUPED_HAND_FIELD]] = $score;
+     }
+     foreach ($choices as &$choice) {
+          $score = $scores_assoc[$choice[CHOICE_GROUPED_HAND_FIELD]];
+          $choice[CHOICE_EXPECTED_RETURN_FIELD] = $score[SCORES_EXPECTED_RETURN_FIELD];
+          $choice[CHOICE_NAME_FILED] = $score[SCORES_NAME_FIELD];
+     }
+     return $choices;
+}
+
+function show_choices($choices)
+{
+     echo '<div id="choices">' . "\n";
+     foreach ($choices as $choice) {
+          if ($choice[CHOICE_NAME_FILED]) {
+               echo $choice[CHOICE_GROUPED_HAND_FIELD] . " " . $choice[CHOICE_NAME_FILED] . "<br>";
+               echo $choice[CHOICE_EXPECTED_RETURN_FIELD];
+          }
+     }
+     echo '</div>' . "\n";
+}
+function output_choices($hand)
+{
+     $choices = generate_choices($hand);
+     show_choices($choices);
 }

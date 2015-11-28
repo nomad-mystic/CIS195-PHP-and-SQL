@@ -17,6 +17,20 @@ POKER;
 
 
 
+//Choice and scores
+const MAX_CHOICE = 32;
+
+const CHOICE_GROUPED_HAND_FIELD = 0;
+const CHOICE_EXPECTED_RETURN_FIELD = 1;
+const CHOICE_NAME_FILED = 2;
+const CHOICE_KEEP_FILED = 3;
+const CHOICE_KEEP_NUMBER_FILED = 4;
+const CHOICE_KEEP_BIT_FILED = 5;
+
+const SCORES_GROUPED_HAND_FIELD = 0;
+const SCORES_EXPECTED_RETURN_FIELD = 1;
+const SCORES_NAME_FIELD = 2;
+
 ///////////////////////////////////
 const IMAGES = 'images/';
 const INCLUDES = 'includes/';
@@ -46,6 +60,24 @@ const RANK_NAMES = [
      'queen',
      'king'
 ];
+
+const SHORT_RANK_NAMES = [
+     'A',
+     '2',
+     '3',
+     '4',
+     '5',
+     '6',
+     '7',
+     '8',
+     '9',
+     'T',
+     'J',
+     'Q',
+     'K',
+     'A'
+];
+
 const SUIT_NAMES = [
 
      'clubs',

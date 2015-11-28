@@ -27,8 +27,8 @@ function login($username, $password)
      if (empty($password)) {
           return error_message(E_LOGIN, E_NO_PASSWORD);
      }
-     $user = look_up_key_value($username, USER_ACCOUNT_FILE);
-
+//     $user = look_up_key_value($username, USER_ACCOUNT_FILE);
+     $user = lookup_user($username);
      if (!$user) {
           return error_message(E_LOGIN, E_USERNAME_NOT_FOUND);
      }
@@ -54,13 +54,14 @@ function register($username, $password, $confirm)
      if ($password !== $confirm) {
           return error_message(E_REGISTER, 'Mismatch');
      }
+//     $user = look_up_key_value($username, USER_ACCOUNT_FILE);
+     $user = lookup_user($username);
 
-     $user = look_up_key_value($username, USER_ACCOUNT_FILE);
      if (!empty($user)) {
           return error_message(E_REGISTER, E_ACCOUNT_EXISTS);
      }
-     add_key_value($username, [$username, password_hash($password, PASSWORD_DEFAULT)], USER_ACCOUNT_FILE);
-
+//     add_key_value($username, [$username, password_hash($password, PASSWORD_DEFAULT)], USER_ACCOUNT_FILE);
+     add_user($username, password_hash($password, PASSWORD_DEFAULT));
      set_user($username);
 
      return '';

@@ -14,6 +14,8 @@ require_once('includes/poker_code.php');
 require_once('includes/page_constants.php');
 require_once('includes/utilities.php');
 require_once('includes/login_constants.php');
+require_once('includes/poker_db_constants.php');
+require_once('includes/poker_db_code.php');
 
 
 require_secure();
@@ -43,6 +45,6 @@ $hand = deal($deck);
 
      <?php show_content($hand); ?>
      <?php output_form($hand, $deck); ?>
-
+     <?php output_choices($hand); ?>
 </body>
 </html>
