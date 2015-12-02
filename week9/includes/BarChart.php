@@ -7,11 +7,15 @@
  */
 
 
-class BarChart
+abstract class BarChart
 {
-     private $sequence;
-     private $maxHeight;
+     protected $sequence;
+     protected $maxHeight;
 
+     abstract function getValue($data_point);
+     abstract function getTitle($data_point);
+     abstract function getAnchor($data_point);
+     abstract function getLabel($data_point);
 
      function __construct($s, $m)
      {
@@ -32,10 +36,12 @@ class BarChart
           echo '    <tr class="barchart_bars">' . "\n";
           foreach ($this->sequence as $data_point) {
                $value = $this->getValue($data_point);
-               $percent = $this->maxHeight * $value / $max_value;
+               $pixels = floor($this->maxHeight * $value / $max_value);
 
                echo '         <td class="barchart_bar">';
-               echo '<div class="bar" style="min-height: ' . $percent . 'px;">&nbsp;</div>';
+               echo '<div class="bar" style="min-height: ' . $pixels . 'px;"';
+               echo 'title="' . $this->getTitle($data_point) . '"';
+               echo '>&nbsp;</div>';
                echo '</td>' . "\n";
 
           }
@@ -45,20 +51,14 @@ class BarChart
                $value = $this->getLabel($data_point);
 
                echo '         <td class="barchart_label">';
-               echo '<div class="bar_label">' . $value . '</div>';
+               echo '<div class="bar_label">';
+               echo '<a href="' . $this->getAnchor($data_point) . '" class="barchart_label_anchor">';
+               echo $value;
+               echo '</a></div>';
                echo '         </td>' . "\n";
 
           }
           echo '    </tr>' . "\n";
           echo '</table>';
-     }
-
-     function getValue($point)
-     {
-        return 100 * $point->getCount() / $point->getTotal();
-     }
-     function getLabel($point)
-     {
-          return $point->getName();
      }
 }

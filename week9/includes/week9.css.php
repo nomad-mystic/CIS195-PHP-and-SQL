@@ -17,6 +17,7 @@ header('Content-Type: text/css');
 .bar_chart {
      cellspacing: 0px;
      border-spacing: 0;
+     margin: 0 auto;
 }
 .bar {
      background-color: green;
@@ -28,6 +29,7 @@ header('Content-Type: text/css');
 .barchart_bar {
      vertical-align: bottom;
      padding: 0;
+     font-size: 0;
 }
 .bar_label {
      -webkit-transform: rotate(90deg) scale(1, 0.8);
@@ -41,4 +43,17 @@ header('Content-Type: text/css');
      padding: 0;
      font-family: sans-serif;
      font-size: 12px;
+     cursor: pointer;;
+}
+.center {
+     text-align: center;
+}
+.barchart_label_anchor {
+     color: #000;
+     text-decoration: none;
+}
+#metaphone {
+     text-decoration: none;
+     color: green;
+
 }

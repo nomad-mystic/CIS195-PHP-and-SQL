@@ -28,13 +28,13 @@ class NamePopularityRecord
           $this->mMetaphone = $metaphone;
      }
 
-     function __destruct()
-     {
-          if ($this->mDirty)
-          {
-//               echo "Destroying object<br>";
-          }
-     }
+//     function __destruct()
+//     {
+//          if ($this->mDirty)
+//          {
+////               echo "Destroying object<br>";
+//          }
+//     }
 
      //// Setters
      function setName($value)

@@ -8,12 +8,12 @@
 
 require_once('includes/constants.php');
 require_once('includes/db_constants.php');
-include_once('includes/NamePopularityRecord.php');
-include_once('includes/NamePopularitySet.php');
-include_once('includes/NameSet.php');
-include_once('includes/MetaphoneSet.php');
+require_once('includes/NamePopularityRecord.php');
+require_once('includes/NamePopularitySet.php');
+require_once('includes/MetaphoneSet.php');
 require_once('includes/code.php');
 require_once('includes/BarChart.php');
+require_once('includes/MetaphoneBarChart.php');
 
 
 
@@ -31,9 +31,12 @@ require_once('includes/BarChart.php');
 //$jill->setCount(3000);
 //$jill->setTotal(100000);
 
-//$records = new NameSet('Keith', 'M', 'MRK');
-$records = new MetaphoneSet('MRK', 'M', 50);
-//$chart = new BarChart($records->getRecords(), 400);
+
+$metaphone = isset($_GET[METAPHONE_KEY]) ? $_GET[METAPHONE_KEY] : 'MR';
+$gender = isset($_GET[GENDER_KEY]) ? $_GET[GENDER_KEY] : 'F';
+
+$records = new MetaphoneSet($metaphone, $gender, NUM_BARS);
+$chart = new MetaphoneBarChart($records->getRecords(), BAR_CHART_HEIGHT);
 
 ?>
 
@@ -46,15 +49,17 @@ $records = new MetaphoneSet('MRK', 'M', 50);
      <script src="includes/week9.js.php"></script>
 </head>
 <body>
-<pre>
-     <?php
-     foreach ($records->getRecords() as $record) {
-          MetaphoneSet::$count++;
-          $record->setRank(MetaphoneSet::$count);
-     }
-     print_r($records);
-     MetaphoneSet::whatAmI();
-     ?>
-</pre>
+
+<div class="center"><h1>Report for <?php echo $metaphone; ?></h1></div>
+     <?php $chart->draw(); ?>
+<!--//          print_r($marc);-->
+<!--//          print_r($jill);-->
+<!--//     echo $jill->getName() . ": " . number_format($jill->percentage(), 4) ."%<br>";-->
+<!--//     echo $marc->getName() . ": " . number_format($marc->percentage(), 4) ."%<br>";-->
+<!---->
+<!--//     print_r($records);-->
+
+<!--<div id="main" onclick="javascript:mainClicked();">Click Me</div>-->
+<!--<div id="display"></div>-->
 </body>
 </html>
