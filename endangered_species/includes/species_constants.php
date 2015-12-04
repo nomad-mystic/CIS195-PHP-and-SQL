@@ -10,5 +10,6 @@
 
 ///////////////////   POST Constants
 
+const ANIMAL_TYPE_KEY = 'animal_type';
 const MAMMAL_KEY = 'mammal';
 const COMMON_NAME_KEY = 'common';
