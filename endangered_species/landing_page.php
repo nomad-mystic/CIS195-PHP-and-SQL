@@ -32,12 +32,27 @@ require_once('includes/species_constants.php');
                     <div class="form-group">
                          <div class="radio">
                          	<label>
-                         		<input type="radio" name="common" id="1" value="mammal">
+                         		<input type="radio" name="animal_type" id="1" value="mammal">
                          		Mammal
                          	</label>
+                              <label>
+                                   <input type="radio" name="animal_type" id="2" value="birds">
+                                   Birds
+                              </label>
+                              <label>
+                                   <input type="radio" name="animal_type" id="3" value="reptiles">
+                                   Reptiles
+                              </label>
+                              <label>
+                                   <input type="radio" name="animal_type" id="4" value="amphibians">
+                                   Amphibians
+                              </label>
+                              <label>
+                                   <input type="radio" name="animal_type" id="5" value="fish">
+                                   Fish
+                              </label>
                          </div>
                     </div>
-
                     <button type="submit" class="btn btn-primary">Submit</button>
                </form>
           </div>
