@@ -10,8 +10,6 @@ class BuildingShowingPage extends EndangeredSpeciesRecord
 {
      protected $mRecords;
 
-//     abstract function   getType($data_point);
-
 
      function __construct($records)
      {
@@ -24,14 +22,20 @@ class BuildingShowingPage extends EndangeredSpeciesRecord
                echo '<div class="row">' . "\n";
                     echo '<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="js-selectArea">' . "\n";
                          echo '<ol id="selectable">';
-                              foreach($this->mRecords as $rec) {
-//                                   echo '<li class="ui-state-default">' . $rec[$rec] . '</li>';
+                              for ($i = 0; $i < 3; $i++) {
+                                   echo '<li class="ui-state-default" id="' . $i++ . '"></li>';
                               }
+//                              foreach ($this->mRecords as $rec) {
+//                                   $image = $this->getImage();
+//                                   $id = $this->getId();
+//                                   print_r($id);
+//                                   echo '<li class="ui-state-default" id="1"></li>';
+//                              }
                          echo '</ol>';
                     echo '</div>' . "\n";
                     echo '<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="js-infoArea">' . "\n";
                               echo '<img src="' . $this->getImage() . '">';
-                              var_dump($this->getImage());']]]]]]]]]]]'
+//                              var_dump($this->getImage());
                     echo '</div>' . "\n";
                echo '</div>' . "\n";
           echo '</div>' . "\n";

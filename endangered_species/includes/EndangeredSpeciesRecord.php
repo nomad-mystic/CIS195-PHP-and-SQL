@@ -10,14 +10,23 @@ class EndangeredSpeciesRecord
 {
 
      private $mType;
-     private $mId;
+     private $mCommon;
+     private $mScience;
+     private $mDescription;
      private $mImage;
+     private $mThumb;
+     private $mId;
+//     private $mId;
 
-     function __construct($type, $image)
+     function __construct($type, $common_name, $science_name, $description, $image, $thumb, $id)
      {
           $this->mType = $type;
-//          $this->mId = $id;
+          $this->mCommon = $common_name;
+          $this->mScience = $science_name;
+          $this->mDescription = $description;
           $this->mImage = $image;
+          $this->mThumb = $thumb;
+          $this->mId = $id;
      }
 
      /// SETTERS
@@ -26,13 +35,32 @@ class EndangeredSpeciesRecord
      {
           $this->mType = $value;
      }
+     function setCommon($value)
+     {
+          $this->mCommon = $value;
+     }
 
-     function setId($value)
+     function setScience($value)
+     {
+          $this->mScience = $value;
+     }
+
+     function setDescription($value)
+     {
+          $this->mDescription = $value;
+     }
+
+     function setImage($value)
      {
           $this->mId= $value;
      }
 
-     function setImage($value)
+     function setThumb($value)
+     {
+          $this->mThumb= $value;
+     }
+
+     function setId($value)
      {
           $this->mId= $value;
      }
@@ -42,14 +70,35 @@ class EndangeredSpeciesRecord
      {
           return $this->mType;
      }
-     function getId()
+
+     function getCommon()
      {
-          return $this->mId;
+          return $this->mCommon;
+     }
+
+     function getScience()
+     {
+          return $this->mScience;
+     }
+
+     function getDescription()
+     {
+          return $this->mDescription;
      }
 
      function getImage()
      {
           return $this->mImage;
+     }
+
+     function getThumb()
+     {
+          return $this->mThumb;
+     }
+
+     function getId()
+     {
+          return $this->mId;
      }
 } // End class
 

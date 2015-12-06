@@ -7,10 +7,10 @@
  */
 
 class NameBarChart extends BarChart
-{
-     function getValue($point)
      {
-          return 100 * $point->getCount() / $point->getTotal();
+          function getValue($point)
+          {
+               return 100 * $point->getCount() / $point->getTotal();
      }
      function getLabel($point)
      {
