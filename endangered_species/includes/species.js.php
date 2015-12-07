@@ -13,10 +13,36 @@
 
 
 $(document).ready(function() {
-     $( "#selectable" ).selectable({
+     $( "#selectableArea" ).selectable({
           selected: function(event, ui) {
-               console.log(event);
+               var $selected = ui.selected;
+
+               revelInfoBox($selected);
           }
      });
 
+     function revelInfoBox($selected) {
+          var $selectedId = $selected.id;
+          var $infoArea = $('#js_info_area');
+          var $foundItem = $infoArea.find('#panel' + $selectedId);
+          var $findVisible = $infoArea.find('.clicked');
+
+          if ($selectedId) {
+               if ($foundItem.hasClass('clicked')) {
+                    $foundItem.stop().velocity({
+                         opacity: 0
+
+                    }, 500);
+                    $foundItem.removeClass('clicked');
+               } else {
+                    $findVisible.stop().velocity({
+                         opacity: 0
+                    }, 200);
+                    $foundItem.stop().velocity({
+                         opacity: 1
+                    }, 500);
+                    $foundItem.addClass('clicked');
+               }
+          } // End if($selectedId)
+     } // End revelInfoBox()
  });

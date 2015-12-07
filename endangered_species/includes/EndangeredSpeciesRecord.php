@@ -16,9 +16,10 @@ class EndangeredSpeciesRecord
      private $mImage;
      private $mThumb;
      private $mId;
+     private $mUrl;
 //     private $mId;
 
-     function __construct($type, $common_name, $science_name, $description, $image, $thumb, $id)
+     function __construct($type, $common_name, $science_name, $description, $image, $thumb, $id, $url)
      {
           $this->mType = $type;
           $this->mCommon = $common_name;
@@ -27,6 +28,7 @@ class EndangeredSpeciesRecord
           $this->mImage = $image;
           $this->mThumb = $thumb;
           $this->mId = $id;
+          $this->mUrl = $url;
      }
 
      /// SETTERS
@@ -64,6 +66,11 @@ class EndangeredSpeciesRecord
      {
           $this->mId= $value;
      }
+
+     function setUrl($value)
+     {
+          $this->mUrl= $value;
+     }
      ///GETTERS
 
      function getType()
@@ -99,6 +106,11 @@ class EndangeredSpeciesRecord
      function getId()
      {
           return $this->mId;
+     }
+
+     function getUrl()
+     {
+          return $this->mUrl;
      }
 } // End class
 

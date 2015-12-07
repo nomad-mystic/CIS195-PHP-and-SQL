@@ -21,8 +21,7 @@ require_once('includes/species_constants.php');
      <link rel="stylesheet" href="includes/species.css.php" type="text/css">
 </head>
 <body>
-<div class="jumbotron">
-</div>
+<div class="jumbotron"></div>
 <div class="container-fluid">
 	<div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -58,8 +57,5 @@ require_once('includes/species_constants.php');
           </div>
 	</div>
 </div>
-
-
-
 </body>
 </html>

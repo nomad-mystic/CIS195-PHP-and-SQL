@@ -7,9 +7,16 @@
  */
 
 
-class animalSet
+class animalSet extends EndangeredSpeciesSet
 {
+     const TYPE = 0;
+     const COMMON_NAME = 1;
+     const SCIENCE_NAME = 2;
+     const DESCRIPTION = 3;
      const IMAGE_FIELD = 4;
+     const THUMB = 5;
+     const ID = 6;
+     const URL = 7;
 
      function __construct($type)
      {
@@ -29,18 +36,17 @@ QUERY;
 
           foreach ($records as $recs) {
                $type_records = new EndangeredSpeciesRecord(
-                    $type,
-                    $recs[AnimalSet::IMAGE_FIELD]
+                    $recs[AnimalSet::TYPE],
+                    $recs[AnimalSet::COMMON_NAME],
+                    $recs[AnimalSet::SCIENCE_NAME],
+                    $recs[AnimalSet::DESCRIPTION],
+                    $recs[AnimalSet::IMAGE_FIELD],
+                    $recs[AnimalSet::THUMB],
+                    $recs[AnimalSet::ID],
+                    $recs[AnimalSet::URL]
                );
 
                $this->mRecords[] = $type_records;
           }
-          var_dump($records);
      }
-
-     function getRecords()
-     {
-          return $this->mRecords;
-     }
-
 }

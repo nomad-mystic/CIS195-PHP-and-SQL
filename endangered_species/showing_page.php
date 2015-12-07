@@ -53,6 +53,7 @@ $showing_page = new BuildingShowingPage($records->getRecords());
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script src="bower_components/velocity/velocity.min.js"></script>
 <script src="includes/species.js.php"></script>
 </body>
 </html>
