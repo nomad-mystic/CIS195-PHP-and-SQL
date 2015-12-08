@@ -10,20 +10,23 @@ header('Content-Type: text/css');
 
  ?>
 
-
-
-.jumbotron {
-
-      background-color: transparent;
-      background: url('../images/jumbotron.jpg') no-repeat;
-
- }
-
-.clicked {
-     z-index: 1000 !important;
+/*----General Styles---*/
+body {
+     background: #0178A8;
 }
-/*----------for jquery----*/
 
+/*----for the landing page----*/
+.landing_page .page-header {
+     background: #fff;
+     padding: 1em;
+     border-radius: 2px;
+     box-shadow: 0 2px 2px 0 rgba(0,0,0,.2);
+}
+.formContainer {
+     margin: 1% auto 5%;
+}
+
+/*----------for jquery----*/
 #feedback {
      font-size: 1.4em;
 }
@@ -45,8 +48,6 @@ header('Content-Type: text/css');
      margin: 3px;
      padding: 1px;
      float: left;
-/*     width: 200px;*/
-/*     height: 200px;*/
      font-size: 4em;
      text-align: center;
      cursor: pointer;
@@ -54,7 +55,7 @@ header('Content-Type: text/css');
 
 /* for the showing page */
 .container-fluid {
-     margin: 5% auto;
+     margin: 1% auto;
 }
 #js_info_area {
      position: relative;
@@ -80,13 +81,13 @@ header('Content-Type: text/css');
 
      }
      #selectableArea div {
-          width: 100px;
-          height: 100px;
+          width: 120px;
+          height: 120px;
      }
 }
 @media screen and (min-width: 1280px) {
      #selectableArea div {
-          width: 175px;
-          height: 175px;
+          width: 150px;
+          height: 150px;
      }
 }

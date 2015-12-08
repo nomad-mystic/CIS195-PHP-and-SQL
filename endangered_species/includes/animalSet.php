@@ -20,7 +20,6 @@ class animalSet extends EndangeredSpeciesSet
 
      function __construct($type)
      {
-
           $this->mRecords = [];
           $db = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
           $safe_type = $db->real_escape_string($type);
@@ -30,7 +29,6 @@ SELECT *
 FROM animals
 WHERE type = '$safe_type';
 QUERY;
-
           $results = $db->query($query);
           $records = $results->fetch_all(MYSQLI_NUM);
 
@@ -45,7 +43,6 @@ QUERY;
                     $recs[AnimalSet::ID],
                     $recs[AnimalSet::URL]
                );
-
                $this->mRecords[] = $type_records;
           }
      }

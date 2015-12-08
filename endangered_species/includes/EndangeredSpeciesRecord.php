@@ -8,7 +8,6 @@
 
 class EndangeredSpeciesRecord
 {
-
      private $mType;
      private $mCommon;
      private $mScience;
@@ -17,7 +16,6 @@ class EndangeredSpeciesRecord
      private $mThumb;
      private $mId;
      private $mUrl;
-//     private $mId;
 
      function __construct($type, $common_name, $science_name, $description, $image, $thumb, $id, $url)
      {
@@ -32,7 +30,6 @@ class EndangeredSpeciesRecord
      }
 
      /// SETTERS
-
      function setType($value)
      {
           $this->mType = $value;
@@ -71,8 +68,8 @@ class EndangeredSpeciesRecord
      {
           $this->mUrl= $value;
      }
-     ///GETTERS
 
+     ///GETTERS
      function getType()
      {
           return $this->mType;

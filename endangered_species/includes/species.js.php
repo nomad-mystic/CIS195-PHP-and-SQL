@@ -28,20 +28,23 @@ $(document).ready(function() {
           var $findVisible = $infoArea.find('.clicked');
 
           if ($selectedId) {
-               if ($foundItem.hasClass('clicked')) {
-                    $foundItem.stop().velocity({
-                         opacity: 0
-
-                    }, 500);
-                    $foundItem.removeClass('clicked');
-               } else {
+               if (!$foundItem.hasClass('clicked')) {
                     $findVisible.stop().velocity({
                          opacity: 0
                     }, 200);
+                    $findVisible.removeClass('clicked');
                     $foundItem.stop().velocity({
                          opacity: 1
                     }, 500);
+
                     $foundItem.addClass('clicked');
+
+               } else {
+                    $foundItem.stop().velocity({
+                         opacity: 0
+                    }, 500);
+                    console.log($foundItem);
+                    $foundItem.removeClass('clicked');
                }
           } // End if($selectedId)
      } // End revelInfoBox()
