@@ -7,7 +7,7 @@
  */
 
 
-class animalSet extends EndangeredSpeciesSet
+class AnimalSet extends EndangeredSpeciesSet
 {
      const TYPE = 0;
      const COMMON_NAME = 1;
@@ -45,5 +45,5 @@ QUERY;
                );
                $this->mRecords[] = $type_records;
           }
-     }
-}
+     } // End __construct
+} // End animalSet

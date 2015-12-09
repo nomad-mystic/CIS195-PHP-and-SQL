@@ -8,11 +8,10 @@
 
  header('Content-Type: text/javascript');
 
- ?>
-
-
+?>
 
 $(document).ready(function() {
+
      $( "#selectableArea" ).selectable({
           selected: function(event, ui) {
                var $selected = ui.selected;
@@ -22,30 +21,28 @@ $(document).ready(function() {
      });
 
      function revelInfoBox($selected) {
-          var $selectedId = $selected.id;
-          var $infoArea = $('#js_info_area');
-          var $foundItem = $infoArea.find('#panel' + $selectedId);
-          var $findVisible = $infoArea.find('.clicked');
+          var $selected_id = $selected.id;
+          var $info_area = $('#js_info_area');
+          var $found_item = $info_area.find('#panel' + $selected_id);
+          var $find_visible = $info_area.find('.clicked');
 
-          if ($selectedId) {
-               if (!$foundItem.hasClass('clicked')) {
-                    $findVisible.stop().velocity({
+          if ($selected_id) {
+               if (!$found_item.hasClass('clicked')) {
+                    $find_visible.stop().velocity({
                          opacity: 0
                     }, 200);
-                    $findVisible.removeClass('clicked');
-                    $foundItem.stop().velocity({
+                    $find_visible.removeClass('clicked');
+
+                    $found_item.stop().velocity({
                          opacity: 1
                     }, 500);
-
-                    $foundItem.addClass('clicked');
-
+                    $found_item.addClass('clicked');
                } else {
-                    $foundItem.stop().velocity({
+                    $found_item.stop().velocity({
                          opacity: 0
                     }, 500);
-                    console.log($foundItem);
-                    $foundItem.removeClass('clicked');
+                    $found_item.removeClass('clicked');
                }
-          } // End if($selectedId)
+          } // End if($selected_id)
      } // End revelInfoBox()
- });
+ }); // End ready

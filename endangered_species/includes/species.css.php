@@ -57,6 +57,17 @@ body {
 .container-fluid {
      margin: 1% auto;
 }
+.showing_header {
+     text-align: center;
+     color: #333;
+     background: #fff;
+     padding: 1em;
+     border-radius: 3px;
+     width: 90%;
+}
+.showing_header_img {
+     box-shadow: 0 2px 2px 2px rgba(0,0,0,.05);
+}
 #js_info_area {
      position: relative;
 }
@@ -70,19 +81,14 @@ body {
 /* Media Queries */
 @media screen and (max-width: 767px) {
      #selectableArea div {
-          width: 100px;
-          height: 100px;
+          width: 130px;
+          height: 130px;
      }
 }
 @media screen and (min-width: 768px) {
-     body .jumbotron {
-          padding-top: 10% !important;
-          padding-bottom: 10% !important;
-
-     }
      #selectableArea div {
-          width: 120px;
-          height: 120px;
+          width: 100px;
+          height: 100px;
      }
 }
 @media screen and (min-width: 1280px) {

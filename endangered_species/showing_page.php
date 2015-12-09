@@ -6,7 +6,7 @@
  * Time: 5:37 PM
  */
 
-require_once('includes/species_constants.php');
+require_once('includes/constants.php');
 require_once('includes/db_constants.php');
 require_once('includes/EndangeredSpeciesRecord.php');
 require_once('includes/EndangeredSpeciesSet.php');
@@ -14,8 +14,9 @@ require_once('includes/BuildShowingPage.php');
 require_once('includes/AnimalSet.php');
 
 $type = $_POST[ANIMAL_TYPE_KEY];
-$records = new animalSet($type);
-$showing_page = new BuildingShowingPage($records->getRecords());
+
+$records = new AnimalSet($type);
+$showing_page = new BuildingShowingPage($records->getRecords(), $type);
 
 ?>
 
@@ -29,7 +30,6 @@ $showing_page = new BuildingShowingPage($records->getRecords());
      <link rel="stylesheet" href="includes/species.css.php" type="text/css">
 </head>
 <body>
-     <img src="images/jumbotron_for_showing.jpg" class="img-responsive" alt="Image">
 
      <?php $showing_page->buildPage(); ?>
 

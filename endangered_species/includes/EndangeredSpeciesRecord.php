@@ -34,6 +34,7 @@ class EndangeredSpeciesRecord
      {
           $this->mType = $value;
      }
+
      function setCommon($value)
      {
           $this->mCommon = $value;

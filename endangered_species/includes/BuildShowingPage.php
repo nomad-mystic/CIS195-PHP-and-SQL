@@ -6,19 +6,22 @@
  * Time: 1:10 AM
  */
 
-class BuildingShowingPage extends EndangeredSpeciesRecord
+class BuildingShowingPage
 {
-     protected $mSelected;
+     private $mSelected;
+     private $mType;
 
-     function __construct($records)
+     function __construct($records, $type)
      {
           $this->mSelected = $records;
+          $this->mType = $type;
      }
 
      function buildPage()
      {
+          echo '<img src="images/headers/' . $this->mType . '.jpg" class="img-responsive showing_header_img" alt="Image">';
           echo '<div class="container-fluid">' . "\n";
-//          echo '<img src="images/jumbotron_for_showing.jpg" class="img-responsive" alt="Image">';
+          echo '<h1 class="showing_header center-block">' . ucfirst($this->mType) . '</h1>';
           echo '  <div class="row center-block">' . "\n";
           echo '    <div class="col-xs-12 col-sm-5 col-md-6 col-lg-5" id="js_select_area">' . "\n";
           echo '      <div class="panel panel-default">';
@@ -44,17 +47,17 @@ class BuildingShowingPage extends EndangeredSpeciesRecord
                $science = $rec->getScience();
                $id = $rec->getId();
                $url = $rec->getUrl();
-               echo '    <div class="panel panel-default" id="panel' . $id . '">' . "\n";
+               echo '    <div class="panel panel-primary" id="panel' . $id . '">' . "\n";
                echo '      <div class="panel-heading"><h1>' . $common . '</h1></div>' . "\n";
                echo '        <div class="panel-body">' . "\n";
                echo '          <div class="row">' . "\n";
                echo '            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">' . "\n";
-               echo '              <h3>' . $url . '</h3>' . "\n";
                echo '              <h3>' . $science . '</h3>' . "\n";
                echo '              <h4><a href="' . $url . '" target="_blank">Wiki Article on ' . $common .'</a></h4>' . "\n";
                echo '              ' . $description  . "\n";
+               echo '              <h6>' . $url . '</h6>' . "\n";
                echo '            </div>' . "\n";
-               echo '            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 testing">' . "\n";
+               echo '            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">' . "\n";
                echo '              <img src="' . $image . '" class="img-responsive center-block" alt="Image">' . "\n";
                echo '            </div>' . "\n";
                echo '         </div>' . "\n";
@@ -64,5 +67,5 @@ class BuildingShowingPage extends EndangeredSpeciesRecord
           echo '    </div>' . "\n";
           echo '  </div>' . "\n";
           echo '</div>' . "\n";
-     }
-}
+     } // End buildPage
+} // End BuildingShowingPage
