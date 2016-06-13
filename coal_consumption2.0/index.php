@@ -19,9 +19,9 @@ require_once('includes/coal_login_constants.php');
 
 
 
-require_secure();
-session_start();
-require_login();
+//require_secure();
+//session_start();
+//require_login();
 
 ?>
 

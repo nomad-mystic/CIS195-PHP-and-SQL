@@ -11,6 +11,9 @@
 
  ?>
 
+body {
+     background: url('../images/background.jpg') no-repeat 0 0;
+}
 .card_image {
      max-width: <?php echo CARD_IMAGE_PERCENT?>;
      max-height: <?php echo CARD_IMAGE_PERCENT?>;
@@ -64,7 +67,7 @@
      text-align: right;
      font-family: sans-serif;
      font-weight: bold;
-
+     color: #fff;
 }
 #content {
      visibility: hidden;

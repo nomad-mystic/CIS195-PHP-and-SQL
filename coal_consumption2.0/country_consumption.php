@@ -8,9 +8,9 @@ require_once('includes/utilities.php');
 require_once('includes/functions.php');
 require_once('includes/functions_stack.php');
 
-require_secure();
-session_start();
-require_login();
+//require_secure();
+//session_start();
+//require_login();
 
 ?>
 

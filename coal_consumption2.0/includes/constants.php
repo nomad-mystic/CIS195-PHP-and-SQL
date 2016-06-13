@@ -26,9 +26,9 @@ const MAP_IMAGE = 'world_map.jpg';
 const IMAGE_FOLDER = 'images';
 const MAP_PICTURE_PATH = IMAGE_FOLDER . '/' . MAP_IMAGE;
 
-const BOWER = 'bower_components';
-const FONT_AWESOME_PATH = '/font-awesome/css/font-awesome.css';
-const CHART_JS_PATH = '/Chart.js/Chart.js';
+const LIB = 'lib/';
+const FONT_AWESOME_PATH = 'font-awesome.css';
+const CHART_JS_PATH = 'Chart.js';
 const CUSTOM_JS_PATH = 'includes/coal.js.php';
 
 //// STYLES

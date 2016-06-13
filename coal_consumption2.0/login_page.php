@@ -11,8 +11,8 @@ require_once('includes/utilities.php');
 require_once('includes/coal_login_functions.php');
 require_once('includes/coal_page_constants.php');
 
-require_secure();
-session_start();
+//require_secure();
+//session_start();
 
 $login_username = get_post_value(LOGIN_USERNAME_KEY);
 $login_password = get_post_value(LOGIN_PASSWORD_KEY);

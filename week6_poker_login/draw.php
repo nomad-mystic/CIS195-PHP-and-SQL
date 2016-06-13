@@ -15,9 +15,9 @@ require_once('includes/hand_type.php');
 require_once('includes/poker_db_constants.php');
 require_once('includes/poker_db_code.php');
 
-require_secure();
+//require_secure();
 session_start();
-require_login();
+//require_login();
 
 //$deck = json_decode(urldecode($_POST[DECK_KEY]));
 //$hand = json_decode(urldecode($_POST[HAND_KEY]));

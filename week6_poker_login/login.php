@@ -14,7 +14,7 @@ require_once('includes/page_constants.php');
 require_once('includes/poker_db_constants.php');
 require_once('includes/poker_db_code.php');
 
-require_secure();
+//require_secure();
 
 session_start();
 

@@ -17,15 +17,12 @@ require_once('includes/login_constants.php');
 require_once('includes/poker_db_constants.php');
 require_once('includes/poker_db_code.php');
 
-
-require_secure();
+//require_secure();
 session_start();
-require_login();
-
+//require_login();
 
 $deck = make_deck();
 $hand = deal($deck);
-
 
 ?>
 
@@ -45,6 +42,6 @@ $hand = deal($deck);
 
      <?php show_content($hand); ?>
      <?php output_form($hand, $deck); ?>
-     <?php output_choices($hand); ?>
+<!--     --><?php //output_choices($hand); ?>
 </body>
 </html>
